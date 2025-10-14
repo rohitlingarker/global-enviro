@@ -8,6 +8,7 @@ import {
   Settings,
   FolderOpen,
   Phone,
+  Users,
   ChevronDown,
   Menu,
   X,
@@ -30,7 +31,7 @@ function CustomLink({ to, icon: Icon, label, dropdownItems, onClick }) {
           if (!dropdownItems) router.push(to);
           if (onClick) onClick();
         }}
-        className={`flex items-center gap-1 cursor-pointer hover:text-orange-500 transition 
+        className={`flex items-center gap-1 cursor-pointer hover:text-orange-500 transition font-bold
         ${pathName === to ? "text-orange-500 underline" : "text-gray-800"}`}
       >
         {Icon && <Icon size={18} />}
@@ -43,11 +44,8 @@ function CustomLink({ to, icon: Icon, label, dropdownItems, onClick }) {
           {dropdownItems.map((item, idx) => (
             <div
               key={idx}
-              onClick={() => {
-                router.push(item.to);
-                if (onClick) onClick();
-              }}
-              className="px-4 py-2 hover:bg-orange-100 cursor-pointer text-gray-700"
+              // Disabled clicking
+              className="px-4 py-2 cursor-default text-gray-700 font-bold"
             >
               {item.label}
             </div>
@@ -84,27 +82,18 @@ export default function Navbar() {
     { label: "Clients & Testimonials", to: "/projects/clients" },
   ];
 
-  const contactDropdown = [
-    { label: "Contact Info", to: "/contact/info" },
-    { label: "Enquiry Form", to: "/contact/enquiry" },
-    { label: "Get a Quote", to: "/contact/quote" },
-  ];
-
   return (
     <nav className="w-full bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-8 flex items-center justify-between h-20">
         {/* Logo Section with hover animation */}
         <div className="flex items-center group relative cursor-pointer">
-          {/* Logo image - hidden on hover */}
           <Image
             src="/assets/images/group-logo.png"
             alt="Global Enviro Logo"
-            width={80}
-            height={80}
+            width={100}
+            height={100}
             className="rounded-full transition-all duration-300 group-hover:opacity-0"
           />
-
-          {/* Text appears on hover */}
           <span
             className="absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap font-extrabold text-gray-800 
             opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-105 
@@ -116,10 +105,11 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 items-center">
+        {/* Centered Desktop Menu */}
+        <div className="hidden md:flex flex-1 justify-center gap-10 items-center">
           <CustomLink to="/" icon={Home} label="Home" />
           <CustomLink icon={Info} label="About Us" dropdownItems={aboutDropdown} />
+          <CustomLink to="/group" icon={Users} label="Group" />
           <CustomLink
             icon={Settings}
             label="Services"
@@ -130,11 +120,7 @@ export default function Navbar() {
             label="Projects"
             dropdownItems={projectsDropdown}
           />
-          <CustomLink
-            icon={Phone}
-            label="Contact"
-            dropdownItems={contactDropdown}
-          />
+          <CustomLink to="/contact" icon={Phone} label="Contact" />
         </div>
 
         {/* Mobile Menu Button */}
@@ -157,6 +143,12 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
             <CustomLink
+              to="/group"
+              icon={Users}
+              label="Group"
+              onClick={() => setMobileOpen(false)}
+            />
+            <CustomLink
               icon={Settings}
               label="Services"
               dropdownItems={servicesDropdown}
@@ -169,9 +161,9 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             />
             <CustomLink
+              to="/contact"
               icon={Phone}
               label="Contact"
-              dropdownItems={contactDropdown}
               onClick={() => setMobileOpen(false)}
             />
           </div>
