@@ -1,4 +1,5 @@
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
+import ServicesSection from "@/components/ServiceSection";
 
 export default function Home() {
   const slides = [
@@ -29,6 +30,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
       <HeroCarousel slides={slides} interval={3000} pauseOnHover={true} />
+      <ServicesSection />
     </main>
   );
 }
