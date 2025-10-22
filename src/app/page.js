@@ -28,7 +28,7 @@ export default function Home() {
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
-      <HeroCarousel slides={slides} interval={3000} pauseOnHover={true} />
+      <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
     </main>
   );
 }
