@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@21st-extension/toolbar-next": "^0.5.14",
     "@heroicons/react": "^2.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
