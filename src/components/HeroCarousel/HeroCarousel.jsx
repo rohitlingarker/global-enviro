@@ -29,19 +29,24 @@ import { cn } from '@/lib/utils'
 //   },
 // ];
 // 
-// <HeroCarousel slides={slides} />
+// <HeroCarousel slides={slides} 
+// interval={2000} 
+// pauseOnHover={false} 
+// />
 
 export default function HeroCarousel({
   slides = [],
   interval = 2000,
+  pauseOnHover = false,
   className,
 }) {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
 
   // Auto-rotate logic
+  // handle pause on hover
   useEffect(() => {
-    if (paused) return
+    if (paused ) return
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
     }, interval)
@@ -56,7 +61,7 @@ export default function HeroCarousel({
         'relative w-full h-[500px] overflow-hidden ',
         className
       )}
-      onMouseEnter={() => setPaused(true)}
+      onMouseEnter={() => setPaused(pauseOnHover && true)}
       onMouseLeave={() => setPaused(false)}
     >
       <AnimatePresence mode="wait">
