@@ -38,6 +38,7 @@ export default function Home() {
 
       
       <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
+      <AboutUs />
       <ServicesSection />
       <Project/>
     </main>
