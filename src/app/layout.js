@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { icons } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/Layouts/Navbar";
+import Footer from "@/components/Layouts/Footer";
 import { TwentyFirstToolbar } from '@21st-extension/toolbar-next';
 
 
