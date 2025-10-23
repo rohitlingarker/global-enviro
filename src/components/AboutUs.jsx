@@ -1,42 +1,79 @@
-import React from "react";
+"use client";
 
-const AboutSection = () => {
+import { motion } from "framer-motion";
+import { Building2, Leaf, Globe, Users } from "lucide-react";
+
+export default function AboutUs() {
   return (
-    <section className="relative flex flex-col md:flex-row w-full bg-white overflow-hidden">
-      {/* Left Content Section */}
-      <div className="relative z-10 md:w-1/2 bg-white px-8 md:px-16 py-12 md:py-20">
-        <h2 className="text-blue-600 text-3xl font-bold mb-2 uppercase tracking-wide">
-          About
-        </h2>
-        <h3 className="text-blue-800 text-2xl md:text-3xl font-bold mb-6 uppercase leading-snug">
-          Global Enviro Group
-        </h3>
-        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non
-          tortor sed ipsum convallis pharetra. Suspendisse facilisis, velit vel
-          finibus congue, sem neque tincidunt lacus, vitae volutpat justo nisi
-          non felis. Vestibulum mattis metus et arcu blandit, sed pulvinar
-          libero commodo. Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit. Quisque non tortor sed ipsum convallis pharetra. Suspendisse
-          facilisis, velit vel finibus congue, sem neque tincidunt lacus, vitae
-          volutpat justo nisi non felis. Vestibulum mattis metus et arcu
-          blandit, sed pulvinar libero commodo.
-        </p>
+    <section className="bg-white py-16 px-6 md:px-20">
+      <div className="max-w-6xl mx-auto text-center">
+        <motion.h2
+          className="text-4xl font-bold text-gray-800 mb-4"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          About Us
+        </motion.h2>
+
+        <motion.p
+          className="text-gray-600 max-w-3xl mx-auto mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          Global Enviro Air Systems (P) Ltd. is a leading environmental engineering
+          company headquartered in Hyderabad, India. We specialize in designing and
+          manufacturing air pollution control equipment and industrial ventilation systems.
+          With a strong focus on innovation and sustainability, we deliver reliable, energy-efficient
+          solutions to clients across multiple industries worldwide.
+        </motion.p>
       </div>
 
-      {/* Decorative angled divider */}
-      <div className="hidden md:block absolute top-0 left-1/2 transform -skew-x-12 w-1/6 h-full bg-gray-100 z-0"></div>
+      <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {[
+          {
+            icon: <Building2 className="w-10 h-10 text-green-600" />,
+            title: "Our Expertise",
+            desc: "Over two decades of engineering excellence in industrial air systems and pollution control."
+          },
+          {
+            icon: <Leaf className="w-10 h-10 text-green-600" />,
+            title: "Sustainability",
+            desc: "Committed to eco-friendly technologies that reduce emissions and protect the environment."
+          },
+          {
+            icon: <Globe className="w-10 h-10 text-green-600" />,
+            title: "Global Presence",
+            desc: "Strong footprint across India and Southeast Asia, serving diverse industrial sectors."
+          },
+          {
+            icon: <Users className="w-10 h-10 text-green-600" />,
+            title: "Our Team",
+            desc: "Led by experienced engineers and environmental specialists dedicated to quality and service."
+          }
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className="p-6 bg-gray-50 rounded-2xl shadow-md hover:shadow-lg transition-shadow"
+            whileHover={{ scale: 1.05 }}
+          >
+            <div className="flex flex-col items-center text-center space-y-4">
+              {item.icon}
+              <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+              <p className="text-gray-600 text-sm">{item.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
 
-      {/* Right Image Section */}
-      <div className="md:w-1/2 relative z-10">
-        <img
-          src="/assets/images/enviro.png"
-          alt="Global Enviro Group"
-          className="w-full h-full object-cover"
-        />
+      <div className="max-w-5xl mx-auto mt-16 text-center">
+        <p className="text-gray-700 leading-relaxed">
+          Our mission is to deliver high-quality, sustainable engineering solutions that meet
+          international standards while ensuring client satisfaction and environmental protection.
+          We continuously innovate to provide reliable and cost-effective systems for a cleaner future.
+        </p>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}
