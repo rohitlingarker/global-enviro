@@ -32,25 +32,19 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative px-62 py-18 overflow-hidden bg-[url('/assets/images/hero-section.png')] bg-cover ">
       {/* Background Image with Soft Overlay */}
       <div className="absolute inset-0 -z-10">
-        <Image
-          src="/assets/image/948c413c-ef43-4533-9fbf-fccda74c955b.png"
-          alt="Industrial Background"
-          fill
-          className="object-cover object-center opacity-30"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm" />
+      
+        <div className="absolute inset-0 backdrop-blur-[10px]" />
       </div>
 
       {/* Animated Heading Section */}
       <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          className="text-4xl font-bold text-accent mb-4"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 2,  scale: [1.5,1.4, 1.5] }}
+        <motion.h1
+          className="text-5xl font-bold text-accent mb-4"
+          initial={{ opacity: 2 }}
+          animate={{ opacity: 4 }}
           transition={{
             duration: 3,
             repeat: Infinity,
@@ -58,18 +52,10 @@ export default function ServicesSection() {
           }}
         >
           Services We Provide
-        </motion.h2>
+        </motion.h1>
 
         <p
           className="text-lg text-accent mb-14 max-w-3xl mx-auto"
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 0.5  }}
-          // transition={{
-          //   duration: 2,
-          //   repeat: Infinity,
-          //   repeatType: "loop",
-          //   delay: 0.02,
-          // }}
         >
           Innovating sustainable industrial solutions for cleaner, safer operations.
           From air pollution control to efficient material handling and HVAC systems.
