@@ -26,17 +26,17 @@ const projects = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
   },
-   {
+  {
     id: 4,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    title: "Waste Heat Recovery",
+    title: "Solar Power Integration",
     description:
       "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
   },
   {
-    id: 4,
+    id: 5,
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    title: "Waste Heat Recovery",
+    title: "Wastewater Treatment",
     description:
       "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
   }
@@ -53,13 +53,12 @@ const Project = () => {
               Our Projects
             </h2>
           </div>
-          <a
-  href="#"
-  className="inline-flex items-center text-accent/100 text-xl font-medium hover:text-primary/100 transition"
->
-  ALL PROJECT
-  <ArrowRight className="ml-2 w-4 h-4" />
-</a>
+          <div>
+            <a href="#" className="inline-flex items-center  text-xl  text-accent/100 hover:text-primary">
+              All Project
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         {/* Project Cards */}
@@ -89,7 +88,7 @@ const Project = () => {
                   href="#"
                   className="inline-flex items-center text-primary-foreground bg-primary hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition"
                 >
-                  READ MORE  
+                  READ MORE
                 </a>
               </div>
             </motion.div>
