@@ -1,3 +1,4 @@
+import AboutUs from "@/components/AboutUs";
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 // Updated import path:
 
@@ -39,7 +40,8 @@ export default function Home() {
 
       
       <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
-      <About/>
+      {/* <AboutUs /> */}
+      <About />
       <ServicesSection />
       <Project/>
     </main>
