@@ -1,6 +1,7 @@
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 // Updated import path:
 
+import ServicesSection from "@/components/ServiceSection";
 
 export default function Home() {
   const slides = [
@@ -34,7 +35,9 @@ export default function Home() {
       {/* Used the updated component name */}
       {/* <Navbar />  */}
 
-      <HeroCarousel slides={slides} interval={3000} pauseOnHover={true} />
+      
+      <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
+      <ServicesSection />
     </main>
   );
 }
