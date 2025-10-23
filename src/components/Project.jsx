@@ -26,6 +26,20 @@ const projects = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
   },
+   {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    title: "Waste Heat Recovery",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    title: "Waste Heat Recovery",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit dolor.",
+  }
 ];
 
 const Project = () => {
@@ -35,13 +49,17 @@ const Project = () => {
         {/* Heading */}
         <div className="flex justify-between items-center mb-10">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+            <h2 className="text-4xl md:text-5xl font-bold text-accent mb-2">
               Our Projects
             </h2>
           </div>
-          <button className="border border-primary px-6 py-2 text-primary font-medium rounded-md hover:bg-primary hover:text-primary-foreground transition">
-            ALL PROJECT
-          </button>
+          <a
+  href="#"
+  className="inline-flex items-center text-accent/100 text-xl font-medium hover:text-primary/100 transition"
+>
+  ALL PROJECT
+  <ArrowRight className="ml-2 w-4 h-4" />
+</a>
         </div>
 
         {/* Project Cards */}
@@ -71,7 +89,7 @@ const Project = () => {
                   href="#"
                   className="inline-flex items-center text-primary-foreground bg-primary hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition"
                 >
-                  READ MORE <ArrowRight className="ml-2 w-4 h-4" />
+                  READ MORE  
                 </a>
               </div>
             </motion.div>

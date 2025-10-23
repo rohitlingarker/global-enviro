@@ -1,9 +1,9 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { cn } from '@/lib/utils'
+"use client";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-// usage 
+// usage
 // const slides = [
 //   {
 //     image:
@@ -28,70 +28,84 @@ import { cn } from '@/lib/utils'
 //     subtitle: "Subtitle 3",
 //   },
 // ];
-// 
-// <HeroCarousel slides={slides} />
+//
+// <HeroCarousel slides={slides}
+// interval={2000}
+// pauseOnHover={false}
+// />
 
 export default function HeroCarousel({
   slides = [],
   interval = 2000,
+  pauseOnHover = false,
+  pauseOnBtnHover = false,
   className,
 }) {
-  const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   // Auto-rotate logic
   useEffect(() => {
-    if (paused) return
+    if (paused) return;
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length)
-    }, interval)
-    return () => clearInterval(timer)
-  }, [paused, slides.length, interval])
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [paused, slides.length, interval]);
 
-  if (!slides.length) return null
+  if (!slides.length) return null;
 
   return (
     <div
-      className={cn(
-        'relative w-full h-[500px] overflow-hidden ',
-        className
-      )}
-      onMouseEnter={() => setPaused(true)}
+      className={cn("relative w-full h-[500px] overflow-hidden", className)}
+      onMouseEnter={() => setPaused(pauseOnHover && true)}
       onMouseLeave={() => setPaused(false)}
     >
       <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
-          className="absolute inset-0"
-        >
-          <img
+        <motion.div key={current} className="absolute inset-0">
+          {/* Image transition */}
+          <motion.img
+            key={`image-${current}`}
             src={slides[current].image}
             alt={slides[current].title}
             className="w-full h-full object-cover"
+            initial={{ opacity: 0, scale: 1 , x:50}}
+            animate={{ opacity: 1, scale: 1 , x:0}}
+            exit={{ opacity: 0, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
           />
+
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40 flex flex-col justify-center text-white p-6 pl-15">
-            <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                
-              {slides[current].title}
-            </h2>
-            {slides[current].subtitle && (
-              <p className="text-lg md:text-xl mb-6 max-w-2xl">
-                {slides[current].subtitle}
-              </p>
-            )}
-            {slides[current].buttonText && (
-              <a
-                href={slides[current].buttonLink}
-                className="bg-primary px-6 py-3 rounded-lg w-fit text-white font-semibold hover:bg-primary-dark transition"
-              >
-                {slides[current].buttonText}
-              </a>
-            )}
+          <div className="absolute inset-0 bg-black/70 flex flex-col justify-center text-primary-foreground px-8 md:px-20">
+            <motion.div
+              key={`text-${current}`}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{
+                duration: 0.6,
+                ease: "easeOut",
+                delay: 0.3, //  delay ensures text animates AFTER image fades in
+              }}
+              className="max-w-4xl"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                {slides[current].title}
+              </h2>
+              {slides[current].subtitle && (
+                <p className="text-lg md:text-xl mb-6 max-w-2xl text-primary-foreground-light">
+                  {slides[current].subtitle}
+                </p>
+              )}
+              {slides[current].buttonText && (
+                <a
+                  href={slides[current].buttonLink}
+                  className="bg-primary px-6 py-3 rounded-lg w-fit text-primary-foreground font-semibold hover:bg-primary-dark transition"
+                >
+                  {slides[current].buttonText}
+                </a>
+              )}
+            </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -103,14 +117,14 @@ export default function HeroCarousel({
             key={i}
             onClick={() => setCurrent(i)}
             className={cn(
-              'w-3 h-3 rounded-full transition-all',
+              "w-2 h-2 rounded-full transition-all",
               i === current
-                ? 'bg-white scale-125'
-                : 'bg-white/50 hover:bg-white/70'
+                ? "bg-white scale-125"
+                : "bg-white/50 hover:bg-white/70"
             )}
           />
         ))}
       </div>
     </div>
-  )
+  );
 }

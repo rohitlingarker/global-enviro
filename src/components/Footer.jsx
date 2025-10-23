@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaGithub, FaCommentDots } from "re
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-gray-700 py-12 px-6 md:px-20 border-t">
+    <footer className="bg-accent text-gray-200 py-12 px-6 md:px-20 border-t">
       {/* Top Section */}
       <div className="grid md:grid-cols-5 gap-10 mb-10">
         {/* Column 1 — Logo + Text + Button */}
@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="bg-yellow-400 rounded-full p-2 flex items-center justify-center">
               <div className="bg-blue-600 w-3 h-3 rounded-sm"></div>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Global Enviro</h2>
+            <h2 className="text-2xl font-bold text-gray-200">Global Enviro</h2>
           </div>
 
           <p className="text-gray-500 mb-6 leading-relaxed">
