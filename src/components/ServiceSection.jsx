@@ -40,7 +40,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Animated Heading Section */}
-      <div className="container mx-auto px-6 text-center">
+      <div className="container mx-auto px-6 text-center w-full">
         <motion.h1
           className="text-5xl font-bold text-accent mb-4"
           initial={{ opacity: 2 }}
@@ -63,11 +63,11 @@ export default function ServicesSection() {
         </p>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 justify-items-center w-auto">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="flex items-start p-6 w-[400px] h-[160px] bg-white/90 shadow-md rounded-2xl border border-gray-200"
+              className="flex items-start p-6 w-auto max-w-auto  h-auto bg-white/90 shadow-md rounded-2xl border border-gray-200"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
