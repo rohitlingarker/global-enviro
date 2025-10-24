@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -80,13 +82,27 @@ const ClientsPage = () => {
         <br></br>
         <ClientsRow logos={row3} reverse={false} />
       </div>
-      <div>
-        <Button>
-            <span>View All Clients</span>
-        </Button>
+      {/* Animated Button */}
+      <div className="flex justify-center mt-10">
+        <motion.button
+          whileHover={{
+            scale: 1.08,
+            backgroundPosition: "right center",
+            boxShadow: "0px 8px 20px rgba(30, 64, 175, 0.3)",
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 200 }}
+          className="px-8 py-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
+        //   onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
+        >
+          View All Clients
+        </motion.button>
       </div>
     </div>
   );
 };
 
 export default ClientsPage;
+
+
+
