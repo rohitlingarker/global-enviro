@@ -1,10 +1,10 @@
-"use client";
+import AboutUs from "@/components/AboutUs";
+import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
+// Updated import path:
 
-import Image from "next/image";
-import Navbar from "../components/Navbar";
-import HeroCarousel from "@/components/HeroCarousel/HeroCarousel.jsx";
-import HeroSection from "@/components/HeroSection/HeroSection.jsx";
-import ClientsPage from "@/components/ClientsPage";
+import ServicesSection from "@/components/ServiceSection";
+import Project from "@/components/Project";
+import About from "@/components/About";
 
 export default function Home() {
   const slides = [
@@ -35,24 +35,17 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gray-50">
-      {/* Optional Navbar */}
-      {/* <Navbar /> */}
+    <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
+      
+      {/* Used the updated component name */}
+      {/* <Navbar />  */}
 
-      {/* Optional Hero Section */}
-      {/* <HeroCarousel slides={slides} /> */}
-
-      {/* Optional static hero section */}
-      {/* <HeroSection
-        title="Global Enviro Engineering"
-        subtitle="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias magni, explicabo at beatae quos officia? Tenetur sunt minus eos magni."
-        imageSrc="https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png"
-      /> */}
-
-      {/* 👇 Clients section appears below */}
-      <section className="w-full py-12">
-        <ClientsPage />
-      </section>
+      
+      <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
+      {/* <AboutUs /> */}
+      <About />
+      <ServicesSection />
+      <Project/>
     </main>
   );
 }
