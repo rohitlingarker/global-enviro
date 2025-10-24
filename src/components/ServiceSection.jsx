@@ -67,7 +67,7 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="flex items-start p-6 w-[400px] h-[150px] bg-white/80 shadow-md rounded-2xl border border-gray-200"
+              className="flex items-start p-6 w-[400px] h-[160px] bg-white/90 shadow-md rounded-2xl border border-gray-200"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
@@ -88,7 +88,7 @@ export default function ServicesSection() {
 
               <div className="text-left">
                 <h3 className="text-2xl font-semibold text-accent mb-2">{service.title}</h3>
-                <p className="text-black text-sm leading-relaxed">{service.description}</p>
+                <p className="text-gray-700 text-1xl leading-relaxed">{service.description}</p>
               </div>
             </motion.div>
           ))}

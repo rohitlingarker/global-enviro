@@ -1,8 +1,11 @@
+import AboutUs from "@/components/AboutUs";
 import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 // Updated import path:
 
 import ServicesSection from "@/components/ServiceSection";
 import Project from "@/components/Project";
+import About from "@/components/About";
+
 export default function Home() {
   const slides = [
     {
@@ -37,6 +40,8 @@ export default function Home() {
 
       
       <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
+      {/* <AboutUs /> */}
+      <About />
       <ServicesSection />
       <Project/>
     </main>
