@@ -34,13 +34,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
-      
-      {/* Used the updated component name */}
-      {/* <Navbar />  */}
-
-      
+       
       <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
-      {/* <AboutUs /> */}
+      {/* <AboutUs />  */}
       <About />
       <ServicesSection />
       <Project/>
