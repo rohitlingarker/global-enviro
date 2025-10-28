@@ -63,7 +63,6 @@ const ClientsRow = ({ logos, reverse }) => (
 const ClientsPage = () => {
   // Split logos into three roughly equal groups
   const third = Math.ceil(clientLogos.length / 3);
-  const row1 = clientLogos.slice(0, third);
   const row2 = clientLogos.slice(third, third * 2);
   const row3 = clientLogos.slice(third * 2);
 
@@ -76,8 +75,6 @@ const ClientsPage = () => {
     Empowering Sustainable Growth Through Innovation and Trust
   </p>
       <div className="space-y-10">
-        <ClientsRow logos={row1} reverse={false} />
-        <br></br>
         <ClientsRow logos={row2} reverse={true} />
         <br></br>
         <ClientsRow logos={row3} reverse={false} />
