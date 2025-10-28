@@ -5,6 +5,8 @@ import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 import ServicesSection from "@/components/ServiceSection";
 import Project from "@/components/Project";
 import About from "@/components/About";
+import Ourgroup from "@/app/Ourgroup/page";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function Home() {
   const slides = [
@@ -44,6 +46,7 @@ export default function Home() {
       <About />
       <ServicesSection />
       <Project/>
+     
     </main>
   );
 }
