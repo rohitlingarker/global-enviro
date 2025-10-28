@@ -30,7 +30,7 @@ const navItems = [
     title: 'Services',
     url: '/services',
     dropdown: [
-      { title: 'Air Pollution Control', url: '/services/air-control' },
+      { title: 'Air Pollution Control', url: '/service/AirPollution' },
       { title: 'Material Handling', url: '/services/material-handling' },
       { title: 'HVAC', url: '/services/hvac' },
       { title: 'EPC Power', url: '/services/epc-power' },

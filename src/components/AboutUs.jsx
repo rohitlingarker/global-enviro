@@ -13,7 +13,7 @@ export default function AboutUs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          About Us
+          About
         </motion.h2>
 
         <motion.p
