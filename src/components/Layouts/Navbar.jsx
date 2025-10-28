@@ -39,7 +39,7 @@ const navItems = [
   { title: 'Projects', url: '/projects' },
   { title: 'Our Clients', url: '/clients' },
   { title: 'News and Events', url: '/news' },
-  { title: 'Careers', url: '/#' },
+  { title: 'Careers', url: '/careers' },
 ];
 
 const Navbar = () => {

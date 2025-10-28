@@ -92,7 +92,7 @@ const ClientsPage = () => {
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="px-8 py-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
+          className="px-8 py-3 bg-gradient-to-tr from-primary to-accent text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
         //   onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
         >
           View All Clients
