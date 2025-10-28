@@ -31,7 +31,7 @@ const navItems = [
     url: '/services',
     dropdown: [
       { title: 'Air Pollution Control', url: '/service/AirPollution' },
-      { title: 'Material Handling', url: '/services/material-handling' },
+      { title: 'Material Handling', url: '/service/MaterialHandling' },
       { title: 'HVAC', url: '/services/hvac' },
       { title: 'EPC Power', url: '/services/epc-power' },
     ],
