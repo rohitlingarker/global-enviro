@@ -1,325 +1,241 @@
-'use client'
-import React, { useState, useEffect } from 'react'; 
-import { FaPhone, FaEnvelope } from 'react-icons/fa'; 
+'use client';
 
-// --- Navigation Data Structure (No Change) ---
+import React, { useState, useEffect } from 'react';
+import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
+import { usePathname } from 'next/navigation';
+
 const navItems = [
-    { title: 'Home', url: '/' },
-    {
-        title: 'About Us',
-        url: '/about',
-        dropdown: [
-            { title: 'Overview', url: '/about/overview' },
-            { title: 'Mission & Vision', url: '/about/mission-vision' },
-            { title: 'Management', url: '/about/management' },
-            { title: 'Our Infrastructure', url: '/about/infrastructure' },
-            { title: 'Certifications', url: '/about/certifications' },
-            { title: 'Our Journey', url: '/about/journey' },
-        ],
-    },
-    {
-        title: 'Group',
-        url: '/group',
-        dropdown: [
-            { title: 'JetTech', url: '/group/jettech' },
-            { title: 'Global Metallurgy', url: '/group/global-metallurgy' },
-        ],
-    },
-    {
-        title: 'Services',
-        url: '/services',
-        dropdown: [
-            { title: 'Air Pollution Control', url: '/services/air-control' },
-            { title: 'Material Handling', url: '/services/material-handling' },
-            { title: 'HVAC', url: '/services/hvac' },
-            { title: 'EPC Power', url: '/services/epc-power' },
-        ],
-    },
-    { title: 'Projects', url: '/projects' },
-    { title: 'Our Clients', url: '/clients' },
-    { title: 'News and Events', url: '/news' },
-    { title: 'Careers', url: '/#' },
+  { title: 'Home', url: '/' },
+  {
+    title: 'About Us',
+    url: '/about',
+    dropdown: [
+      { title: 'Overview', url: '/about/overview' },
+      { title: 'Mission & Vision', url: '/about/mission-vision' },
+      { title: 'Management', url: '/about/management' },
+      { title: 'Our Infrastructure', url: '/about/infrastructure' },
+      { title: 'Certifications', url: '/about/certifications' },
+      { title: 'Our Journey', url: '/about/journey' },
+    ],
+  },
+  {
+    title: 'Group',
+    url: '/group',
+    dropdown: [
+      { title: 'JetTech', url: '/group/jettech' },
+      { title: 'Global Metallurgy', url: '/group/global-metallurgy' },
+    ],
+  },
+  {
+    title: 'Services',
+    url: '/services',
+    dropdown: [
+      { title: 'Air Pollution Control', url: '/services/air-control' },
+      { title: 'Material Handling', url: '/services/material-handling' },
+      { title: 'HVAC', url: '/services/hvac' },
+      { title: 'EPC Power', url: '/services/epc-power' },
+    ],
+  },
+  { title: 'Projects', url: '/projects' },
+  { title: 'Our Clients', url: '/clients' },
+  { title: 'News and Events', url: '/news' },
+  { title: 'Careers', url: '/#' },
 ];
 
-const Navbar = () => { 
-    // State to track if the user has scrolled past the main header
-    const [isScrolled, setIsScrolled] = useState(false); 
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const pathname = usePathname();
 
-    // -------------------------------------------------------------------
-    // Scroll Effect Implementation
-    // -------------------------------------------------------------------
-    useEffect(() => {
-        const handleScroll = () => {
-            // Check if the scroll position is past a certain threshold (e.g., 100px)
-            setIsScrolled(window.scrollY > 100);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        
-        // Cleanup function to remove the event listener
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-    // -------------------------------------------------------------------
-
-    const primaryBlue = '#3877d4'; 
-    const secondaryBlue = '#386FC1FF'; 
-    const lightGray = '#386FC1FF'; 
-
-    // Dynamic heights based on scroll state
-    const navHeight = isScrolled ? '40px' : '60px'; // Navbar shrinks on scroll
-    const logoHeight = isScrolled ? '30px' : '40px'; // Logo shrinks on scroll
-    
-    // -------------------------------------------------------------------
-    // STYLES
-    // -------------------------------------------------------------------
-
-    const styles = {
-        // Outer container for the entire header, needed for fixed positioning
-        headerWrapper: {
-            width: '100%',
-            position: isScrolled ? 'fixed' : 'static', 
-            top: 0,
-            zIndex: 1000,
-            boxShadow: isScrolled ? '0 2px 5px rgba(0,0,0,0.1)' : 'none',
-            backgroundColor: 'white', 
-            transition: 'all 0.3s ease-in-out',
-        },
-        headerContainer: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '5px 5%',
-            backgroundColor: 'white',
-            borderBottom: `1px solid ${lightGray}`,
-            // Hide the entire white bar when scrolled
-            display: isScrolled ? 'none' : 'flex', 
-        },
-        logoSection: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-        },
-        // --- NEW STYLE for the tagline under the logo (in the white bar) ---
-        secondaryTagline: {
-            fontSize: '10px',
-            color: primaryBlue,
-            fontWeight: '600',
-            marginTop: '2px',
-        },
-        // --- NEW STYLE for the main header logo image ---
-        mainLogoImage: {
-            height: '70px', // Original height
-            width: 'auto',
-        },
-        contactSection: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '20px',
-        },
-        contactItem: {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px',
-            fontSize: '14px',
-            color: '#333',
-        },
-        ctaButton: {
-            backgroundColor: primaryBlue,
-            color: 'white',
-            padding: '12px 25px',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontSize: '15px',
-            fontWeight: '600',
-            textTransform: 'uppercase',
-            marginLeft: '20px',
-            transition: 'background-color 0.3s',
-        },
-        
-        // --- Main Nav Bar Styles for Centering (Dynamic Height) ---
-        navBar: {
-            backgroundColor: primaryBlue,
-            display: 'flex',
-            justifyContent: 'space-between', 
-            alignItems: 'center',
-            padding: '0 5%',
-            position: 'relative', 
-            height: navHeight, // ⬅️ Dynamic Height
-            transition: 'height 0.3s ease-in-out',
-            // Crucial for dropdown: remove overflow: hidden if it were present
-            overflow: 'visible', 
-        },
-        
-        // --- Style for the logo image on the dark blue bar (Dynamic Height) ---
-        navLogoImage: {
-            height: logoHeight, // ⬅️ Dynamic Height (Shrinks on scroll)
-            width: 'auto',
-            transition: 'height 0.3s ease-in-out',
-        },
-
-        navList: {
-            display: 'flex',
-            listStyle: 'none',
-            margin: 0,
-            padding: 0,
-            flexGrow: 1, 
-            justifyContent: 'center', 
-        },
-        // --- FIX: Increase zIndex on navItem to ensure dropdown is on top ---
-        navItem: {
-            position: 'relative',
-            cursor: 'pointer',
-            padding: isScrolled ? '10px 15px' : '15px 15px', 
-            color: 'white',
-            fontWeight: '600',
-            textTransform: 'uppercase',
-            fontSize: '14px',
-            transition: 'all 0.3s',
-            zIndex: 10, // ⬅️ FIX: Ensure this is above other elements
-        },
-        navItemHover: {
-            backgroundColor: secondaryBlue,
-        },
-        dropdownMenu: {
-            position: 'absolute',
-            top: '100%',
-            left: '0',
-            backgroundColor: 'white',
-            border: `1px solid ${lightGray}`,
-            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-            zIndex: 11, // ⬅️ FIX: Ensure this is above the navItem sibling content (but still nested)
-            minWidth: '200px',
-            listStyle: 'none',
-            padding: '10px 0',
-            margin: 0,
-            display: 'none', 
-        },
-        dropdownItem: {
-            padding: '7px 15px',
-            color: '#333',
-            fontSize: '14px',
-            textTransform: 'none',
-        },
-        dropdownItemHover: {
-            backgroundColor: lightGray,
-        },
-        requestQuoteButton: {
-            backgroundColor: 'black',
-            color: 'white',
-            padding: isScrolled ? '10px 20px' : '15px 20px',
-            fontWeight: '700',
-            textTransform: 'uppercase',
-            fontSize: '14px',
-            cursor: 'pointer',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            transition: 'padding 0.3s ease-in-out',
-        },
+  useEffect(() => {
+    let lastScrollTop = 0;
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      // Add shadow only when scrolling down
+      if (currentScroll > 80 && currentScroll > lastScrollTop) {
+        setIsScrolled(true);
+      } else if (currentScroll < 50) {
+        setIsScrolled(false);
+      }
+      lastScrollTop = currentScroll;
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    // --- Sub-Components (Unchanged, correctly scoped) ---
-    const DropdownItem = ({ item }) => {
-        const [isHovered, setIsHovered] = React.useState(false);
-        return (
-            <li
-                style={{
-                    ...styles.dropdownItem,
-                    ...(isHovered ? styles.dropdownItemHover : {}),
-                }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <a href={item.url} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                    {item.title}
-                </a>
-            </li>
-        );
-    };
+  const primaryBlue = '#3877d4';
+  const secondaryBlue = '#386FC1';
 
-    const NavItem = ({ item }) => {
-        const [isHovered, setIsHovered] = React.useState(false);
-        const hasDropdown = item.dropdown && item.dropdown.length > 0;
+  return (
+    <header
+      className={`w-full top-0 left-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'fixed bg-white/90 backdrop-blur-md shadow-lg'
+          : 'relative bg-white'
+      }`}
+    >
+      {/* --- Top White Bar (hidden after scroll) --- */}
+      {!isScrolled && (
+        <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white transition-all">
+          <div className="flex flex-col items-start">
+            <a href="/" className="leading-none">
+              <img
+                src="/assets/images/group-logo.png"
+                alt="Global Enviro Logo"
+                className="h-[70px] w-auto"
+              />
+            </a>
+          </div>
 
-        return (
-            <li
-                style={{
-                    ...styles.navItem,
-                    ...(isHovered ? styles.navItemHover : {}),
-                }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <a href={item.url} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    {item.title} {hasDropdown && '▼'}
-                </a>
-
-                {hasDropdown && (
-                    <ul
-                        style={{
-                            ...styles.dropdownMenu,
-                            display: isHovered ? 'block' : 'none',
-                        }}
-                    >
-                        {item.dropdown.map((subItem) => (
-                            <DropdownItem key={subItem.title} item={subItem} />
-                        ))}
-                    </ul>
-                )}
-            </li>
-        );
-    };
-
-    // --- Main Render Function ---
-    return (
-        <header style={styles.headerWrapper}>
-            {/* 1. Header/Contact Info Section (White Bar) */}
-            <div style={styles.headerContainer}>
-                <div style={styles.logoSection}>
-                    {/* The logo area: Global Enviro */}
-                    {/* <p style={{ fontSize: '12px', color: '#666', margin: 0 }}><p style={styles.secondaryTagline}>Environmentally Sound Solutions, Globally Delivered!</p></p> */}
-                    <a href="/" style={{ lineHeight: '0' }}>
-                        <img 
-                            src="/assets/images/group-logo.png" 
-                            alt="Global Enviro Logo" 
-                            style={styles.mainLogoImage} 
-                        />
-                    </a>
-                    {/* CORRECTED: Tagline is now a sibling element, not nested incorrectly */}
-                    {/* <p style={styles.secondaryTagline}>Environmentally Sound Solutions, Globally Delivered!</p>  */}
-                </div>
-
-                <div style={styles.contactSection}>
-                    <div style={styles.contactItem}>
-                        <FaPhone style={{ color: primaryBlue }} />
-                        <span>+91 98765-24576</span> 
-                    </div>
-                    <div style={styles.contactItem}>
-                        <FaEnvelope style={{ color: primaryBlue }} />
-                        <span>info@global.com</span>
-                    </div>
-                    <button style={styles.ctaButton}>REQUEST A QUOTE</button>
-                </div>
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-2 text-gray-700">
+              <FaPhone className="text-[#3877d4]" />
+              <span>+91 98765-24576</span>
             </div>
+            <div className="flex items-center gap-2 text-gray-700">
+              <FaEnvelope className="text-[#3877d4]" />
+              <span>info@global.com</span>
+            </div>
+            <button className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all">
+              REQUEST A QUOTE
+            </button>
+          </div>
+        </div>
+      )}
 
-            {/* 2. Main Navigation Bar (Dark Blue Bar - UPDATED LAYOUT) */}
-            <nav style={styles.navBar}>
-                
-                
+      {/* --- Main Navigation Bar --- */}
+      <nav
+        aria-label="Main Navigation"
+        className={`flex items-center justify-between px-6 lg:px-20 transition-all duration-300`}
+        style={{
+          backgroundColor: primaryBlue,
+          height: isScrolled ? '45px' : '60px',
+        }}
+      >
+        {/* Logo (Visible on small screens only) */}
+        <a href="/" className="block lg:hidden">
+          <img
+            src="/assets/images/group-logo.png"
+            alt="Global Enviro"
+            className={`transition-all duration-300 ${
+              isScrolled ? 'h-6' : 'h-8'
+            }`}
+          />
+        </a>
 
-                <ul style={styles.navList}>
-                    {navItems.map((item) => (
-                        <NavItem key={item.title} item={item} />
+        {/* Desktop Nav */}
+        <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
+          {navItems.map((item) => {
+            const isActive = pathname === item.url;
+
+            return (
+              <li
+                key={item.title}
+                className="relative group"
+                onMouseEnter={() => setActiveDropdown(item.title)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <a
+                  href={item.url}
+                  className={`px-2 py-1 transition-colors rounded-md ${
+                    isActive
+                      ? 'bg-[#386FC1]'
+                      : 'hover:bg-[#386FC1] hover:shadow-sm'
+                  }`}
+                >
+                  {item.title} {item.dropdown && <span>▼</span>}
+                </a>
+
+                {/* Dropdown Menu */}
+                {item.dropdown && (
+                  <ul
+                    aria-label={`${item.title} submenu`}
+                    className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[200px] transform transition-all duration-300 ${
+                      activeDropdown === item.title
+                        ? 'opacity-100 translate-y-0 visible'
+                        : 'opacity-0 -translate-y-2 invisible'
+                    }`}
+                  >
+                    {item.dropdown.map((subItem) => (
+                      <li key={subItem.title}>
+                        <a
+                          href={subItem.url}
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                        >
+                          {subItem.title}
+                        </a>
+                      </li>
                     ))}
-                </ul>
-                
-                <div style={styles.requestQuoteButton}>
-                    CONTACT US
-                </div>
-            </nav>
-        </header>
-    );
+                  </ul>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Contact Us Button */}
+        <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
+          CONTACT US
+        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          className="lg:hidden text-white text-xl"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </nav>
+
+      {/* --- Mobile Dropdown Menu --- */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
+          <ul className="flex flex-col">
+            {navItems.map((item) => (
+              <li key={item.title} className="border-b border-gray-200">
+                <button
+                  onClick={() =>
+                    setActiveDropdown(
+                      activeDropdown === item.title ? null : item.title
+                    )
+                  }
+                  className="w-full text-left px-5 py-3 font-semibold flex justify-between items-center"
+                >
+                  <span>{item.title}</span>
+                  {item.dropdown && <span>▼</span>}
+                </button>
+
+                {item.dropdown && activeDropdown === item.title && (
+                  <ul className="bg-gray-50 transition-all duration-300">
+                    {item.dropdown.map((subItem) => (
+                      <li key={subItem.title}>
+                        <a
+                          href={subItem.url}
+                          className="block px-7 py-2 text-sm hover:bg-gray-200"
+                        >
+                          {subItem.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+            <li className="p-4 text-center">
+              <a
+                href="#"
+                className="block bg-[#3877d4] text-white py-2 rounded-md font-semibold hover:bg-[#2f5fb8]"
+              >
+                CONTACT US
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Navbar;

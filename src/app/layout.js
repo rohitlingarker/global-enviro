@@ -30,11 +30,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TwentyFirstToolbar
-          config={{
-            plugins: [], // Add your custom plugins here
-          }}
-        />
+        
         <Navbar />
         {children}
         <Footer />
