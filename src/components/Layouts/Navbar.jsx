@@ -28,9 +28,9 @@ const navItems = [
   },
   {
     title: 'Services',
-    url: '/services',
+    url: '/service',
     dropdown: [
-      { title: 'Air Pollution Control', url: '/service/AirPollution' },
+      { title: 'Air Pollution Control', url: '/service/AirPollutionControl' },
       { title: 'Material Handling', url: '/service/MaterialHandling' },
       { title: 'HVAC', url: '/services/hvac' },
       { title: 'EPC Power', url: '/services/epc-power' },
