@@ -83,7 +83,7 @@ const products = [
 
 ];
 
-export default function AirPollutionPage() {
+export default function MaterialHandlingPage() {
   return (
     <main className="bg-blue-100 min-h-screen">
       <HeaderSection

@@ -30,6 +30,7 @@ const navItems = [
   {
     title: 'Services',
     url: '/service',
+    url: '/service',
     dropdown: [
       {
         title: 'Air Pollution Control',
