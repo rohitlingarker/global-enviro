@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const navItems = [
   { title: 'Home', url: '/' },
@@ -11,7 +12,7 @@ const navItems = [
     url: '/about',
     dropdown: [
       { title: 'Overview', url: '/about/overview' },
-      { title: 'Mission & Vision', url: '/about/mission-vision' },
+      { title: 'Mission & Vision', url: '/about/MissionVision' },
       { title: 'Management', url: '/about/management' },
       { title: 'Our Infrastructure', url: '/about/infrastructure' },
       { title: 'Certifications', url: '/about/certifications' },
@@ -39,7 +40,7 @@ const navItems = [
   { title: 'Projects', url: '/projects' },
   { title: 'Our Clients', url: '/clients' },
   { title: 'News and Events', url: '/news' },
-  { title: 'Careers', url: '/#' },
+  { title: 'Careers', url: '/careers' },
 ];
 
 const Navbar = () => {
@@ -52,7 +53,6 @@ const Navbar = () => {
     let lastScrollTop = 0;
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      // Add shadow only when scrolling down
       if (currentScroll > 80 && currentScroll > lastScrollTop) {
         setIsScrolled(true);
       } else if (currentScroll < 50) {
@@ -65,7 +65,6 @@ const Navbar = () => {
   }, []);
 
   const primaryBlue = '#3877d4';
-  const secondaryBlue = '#386FC1';
 
   return (
     <header
@@ -75,18 +74,16 @@ const Navbar = () => {
           : 'relative bg-white'
       }`}
     >
-      {/* --- Top White Bar (hidden after scroll) --- */}
+      {/* --- Top White Bar --- */}
       {!isScrolled && (
-        <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white transition-all">
-          <div className="flex flex-col items-start">
-            <a href="/" className="leading-none">
-              <img
-                src="/assets/images/group-logo.png"
-                alt="Global Enviro Logo"
-                className="h-[70px] w-auto"
-              />
-            </a>
-          </div>
+        <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white">
+          <Link href="/" className="leading-none">
+            <img
+              src="/assets/images/group-logo.png"
+              alt="Global Enviro Logo"
+              className="h-[70px] w-auto"
+            />
+          </Link>
 
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2 text-gray-700">
@@ -104,7 +101,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* --- Main Navigation Bar --- */}
+      {/* --- Main Nav --- */}
       <nav
         aria-label="Main Navigation"
         className={`flex items-center justify-between px-6 lg:px-20 transition-all duration-300`}
@@ -113,8 +110,8 @@ const Navbar = () => {
           height: isScrolled ? '45px' : '60px',
         }}
       >
-        {/* Logo (Visible on small screens only) */}
-        <a href="/" className="block lg:hidden">
+        {/* Mobile Logo */}
+        <Link href="/" className="block lg:hidden">
           <img
             src="/assets/images/group-logo.png"
             alt="Global Enviro"
@@ -122,13 +119,12 @@ const Navbar = () => {
               isScrolled ? 'h-6' : 'h-8'
             }`}
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
           {navItems.map((item) => {
             const isActive = pathname === item.url;
-
             return (
               <li
                 key={item.title}
@@ -136,22 +132,20 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveDropdown(item.title)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <a
+                <Link
                   href={item.url}
-                  className={`px-2 py-1 transition-colors rounded-md ${
+                  className={`px-2 py-1 transition-colors rounded-md flex items-center gap-1 ${
                     isActive
                       ? 'bg-[#386FC1]'
                       : 'hover:bg-[#386FC1] hover:shadow-sm'
                   }`}
                 >
                   {item.title} {item.dropdown && <span>▼</span>}
-                </a>
+                </Link>
 
-                {/* Dropdown Menu */}
                 {item.dropdown && (
                   <ul
-                    aria-label={`${item.title} submenu`}
-                    className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[200px] transform transition-all duration-300 ${
+                    className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[200px] transition-all duration-300 ${
                       activeDropdown === item.title
                         ? 'opacity-100 translate-y-0 visible'
                         : 'opacity-0 -translate-y-2 invisible'
@@ -159,12 +153,12 @@ const Navbar = () => {
                   >
                     {item.dropdown.map((subItem) => (
                       <li key={subItem.title}>
-                        <a
+                        <Link
                           href={subItem.url}
                           className="block px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
                         >
                           {subItem.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -174,22 +168,21 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Contact Us Button */}
+        {/* Contact Button */}
         <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
-          CONTACT US
+          Contact Us
         </div>
 
         {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle navigation menu"
         >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
+      {/* --- Mobile Menu --- */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
           <ul className="flex flex-col">
@@ -211,12 +204,13 @@ const Navbar = () => {
                   <ul className="bg-gray-50 transition-all duration-300">
                     {item.dropdown.map((subItem) => (
                       <li key={subItem.title}>
-                        <a
+                        <Link
                           href={subItem.url}
                           className="block px-7 py-2 text-sm hover:bg-gray-200"
+                          onClick={() => setIsMobileMenuOpen(false)} // close on click
                         >
                           {subItem.title}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -224,12 +218,12 @@ const Navbar = () => {
               </li>
             ))}
             <li className="p-4 text-center">
-              <a
-                href="#"
+              <Link
+                href="/contact"
                 className="block bg-[#3877d4] text-white py-2 rounded-md font-semibold hover:bg-[#2f5fb8]"
               >
                 CONTACT US
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
