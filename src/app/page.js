@@ -66,10 +66,8 @@ Delivering reliable, scalable infrastructure that drives sustainable growth and 
         pauseOnHover={false}
         pauseOnBtnHover={true}
       />
-      {/* <AboutUs />  */}
       <About />
-      {/* <ServicesSection /> */}
-      {/* <Project /> */}
+      
       <ClientsPage />
     </main>
   );

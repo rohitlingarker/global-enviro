@@ -33,10 +33,12 @@ export default function HeaderSection({ title, description, imgSrc, description1
         <Image
           src={imgSrc}
           alt={title}
-          width={500}
-          height={450}
+          width={450}
+          height={400}
           className="rounded-[2rem] shadow-2xl object-cover border-4 border-white"
         />
+        
+
       </motion.div>
     </section>
   );
