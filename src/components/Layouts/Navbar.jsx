@@ -236,7 +236,7 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <Link
-            href="/contact"
+            href="/contactUs"
             className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
           >
             Contact Us

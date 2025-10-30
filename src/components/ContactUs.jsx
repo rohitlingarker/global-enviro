@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function ContactUS() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 px-6 flex flex-col items-center">
+    <div className="min-h-screen bg-linear-to-b from-blue-50 to-white py-16 px-6 flex flex-col items-center">
       
       {/* Header */}
       <h1 className="text-4xl font-bold text-blue-800 mb-10 tracking-wide">
