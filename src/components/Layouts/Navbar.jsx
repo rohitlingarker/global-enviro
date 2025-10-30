@@ -151,11 +151,11 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-gray-700">
               <FaPhone className="text-[#3877d4]" />
-              <span className="text-sm">+91 98765-24576</span>
+              <span className="text-sm">+91 98480 31866</span>
             </div>
             <div className="flex items-center gap-2 text-gray-700">
               <FaEnvelope className="text-[#3877d4]" />
-              <span className="text-sm">info@global.com</span>
+              <span className="text-sm">ksr@globalenviro.in</span>
             </div>
             <Link
               href="/RequestQuote"
@@ -284,7 +284,7 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <Link
-            href="/contact"
+            href="/ContactUs"
             className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
           >
             Contact Us

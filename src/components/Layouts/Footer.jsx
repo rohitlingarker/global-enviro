@@ -56,23 +56,23 @@ const Footer = () => {
             className="h-12 mb-4 brightness-0 invert"
           />
           <p className="text-sm leading-relaxed mb-6 text-gray-100/90">
-            Delivering innovative environmental engineering solutions that help
-            industries achieve sustainable growth while reducing their
-            environmental impact.
+            Global Enviro Air Systems Pvt Ltd.
+Sy. No. 163/A, Gagillapur (Vil), 
+Dundigal- Gandimaisamma Mandal,
           </p>
 
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-[#a2dbee]" />
-              #45, GreenTech Industrial Zone, Bengaluru, India
+              Medchal-Malkajgiri (Dist) Hyderabad, Telangana
             </li>
             <li className="flex items-center gap-3">
               <FaPhone className="text-[#a2dbee]" />
-              +91 98764 43564
+              +91 98480 31866
             </li>
             <li className="flex items-center gap-3">
               <FaEnvelope className="text-[#a2dbee]" />
-              info@globalenviro.com
+              ksr@globalenviro.com
             </li>
           </ul>
         </div>
@@ -128,13 +128,13 @@ const Footer = () => {
             </p>
             <div className="flex items-center gap-4">
               <a
-                href="/contact"
+                href="/ContactUs"
                 className="bg-[#a2dbee] text-[#0b203a] font-semibold px-5 py-2 rounded-full hover:bg-[#bde3f6] transition-all duration-300 shadow-md text-center"
               >
                 Contact Us
               </a>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/globalenviro-hyderabad"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-100/10 text-[#a2dbee] hover:bg-[#a2dbee] hover:text-[#0b203a] p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-center"
