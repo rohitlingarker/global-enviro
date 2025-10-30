@@ -6,17 +6,52 @@ import OurJourney from "@/components/about/OurJourney";
 import OurInfrastructure from "@/components/About/OurInfrastructure";
 import MissionVision from "@/components/About/MissionVision";
 import Management from "@/components/About/Management";
+import { useEffect } from "react";
 
 export default function AboutPage() {
+  useEffect(() => {
+    const handleHashChange = () => {
+      const element = document.querySelector(window.location.hash);
+      if (element) {
+        // element.scrollIntoView({ behavior: "smooth", block: "start" });
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      }
+    };
+
+    // Scroll on load
+    handleHashChange();
+
+    // Scroll when hash changes (same page navigation)
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   return (
     <main>
-      <AboutBanner/>
-      <Overview />
-      <MissionVision/>
-      <Management/>
-      <OurInfrastructure />
-      <Certifications />
-      <OurJourney />
+      <section id="banner">
+        <AboutBanner />
+      </section>
+      <section id="overview">
+        <Overview />
+      </section>
+      <section id="mission">
+        <MissionVision />
+      </section>
+      <section id="management">
+        <Management />
+      </section>
+      <section id="infrastructure">
+        <OurInfrastructure />
+      </section>
+      <section id="certifications">
+        <Certifications />
+      </section>
+      <section id="journey">
+        <OurJourney />
+      </section>
     </main>
   );
 }
