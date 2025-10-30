@@ -12,7 +12,7 @@ const companies = [
     image:
       "/assets/images/global image.jpg",
     shape: "rounded-full", // Circle shape
-    link: "/group/global-enviro",
+    link: "/about",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const companies = [
       "Indophil Jettech Energy Pvt. Ltd. is a leading player in Engineering, Procurement, and Construction (EPC) services for Biomass Power Plants, Solar Power Plants, Edible Oil Refineries, and Process Boilers. As a rapidly growing entity in the Philippines Energy Sector, our portfolio boasts over 55 MW (Biomass Power Plants) capacity and 15 MW (Solar Power Plants).",
     image:
       "/assets/images/jettech.jpg",
-     link: "/group/Jet tech",
+     link: "https://www.jettechenergy.com/",
   },
   {
     id: 3,
