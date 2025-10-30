@@ -39,7 +39,7 @@ const navItems = [
           },
           {
             title: "Centrifugal Fans",
-            url: "/service/AirPollutionControl/centrifugal-fans",
+            url: "/service/AirPollutionControl/4",
           },
           { title: "HVAC Clean Room", url: "/service/AirPollutionControl/5" },
           {
