@@ -1,6 +1,6 @@
 "use client";
 import SectionCard from "@/components/commonForService/HVSectionCard";
-import { motion } from "framer-motion";
+
 
 export default function HVACContent() {
   const sections = [
@@ -75,18 +75,15 @@ export default function HVACContent() {
 //     </div>
 //   );
 return (
-    <motion.div
+    <div
       className="py-12 px-6 md:px-16 bg-[#f4faff]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       {/* --- Heading Section --- */}
-      <motion.div
+      <div
         className="text-center mb-14"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-[#1a3c7b] mb-4 uppercase tracking-wide">
           HVAC CLEANROOM SOLUTIONS
@@ -98,27 +95,20 @@ return (
           for energy efficiency, cleanliness, and long-term reliability, ensuring
           compliance with international cleanroom standards.
         </p>
-      </motion.div>
+      </div>
 
       {/* --- Animated Section Cards --- */}
       <div className="flex flex-col gap-12">
         {sections.map((section, index) => (
-          <motion.div
+          <div
             key={index}
             className="relative"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: "easeOut",
-            }}
+            
           >
             <SectionCard {...section} />
-          </motion.div>
+          </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

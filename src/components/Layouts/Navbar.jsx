@@ -36,11 +36,11 @@ const navItems = [
         title: 'Air Pollution Control',
         url: '/service/AirPollutionControl',
         subDropdown: [
-          { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/pulse-jet-bag' },
-          { title: 'Dust Extraction', url: '/service/AirPollutionControl/dust-extraction' },
+          { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/1' },
+          { title: 'Dust Extraction', url: '/service/AirPollutionControl/2' },
           { title: 'Ash Handling', url: '/service/AirPollutionControl/ash-handling' },
           { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/centrifugal-fans' },
-          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/hvac-clean-room' },
+          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/5' },
           { title: 'Clean Room Panel', url: '/service/AirPollutionControl/clean-room-panel' },
         ],
       },
@@ -56,8 +56,8 @@ const navItems = [
         title: 'HVAC',
         url: '/service/HVAC',
         subDropdown: [
-          { title: 'HVAC System Components', url: '/service/HVAC/components' },
-          { title: 'Clean Room Equipments', url: '/service/HVAC/clean-room-equipments' },
+          { title: 'HVAC System Components', url: '/service/HVAC/HVACComponents' },
+          { title: 'Clean Room Equipments', url: '/service/HVAC/CleanRoomEquipments' },
         ],
       },
       {
@@ -231,9 +231,13 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
+        <Link
+        href="/contactUs"
+          className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
+        >
           Contact Us
-        </div>
+        </Link>
+
 
         {/* Mobile Menu Toggle */}
         <button
@@ -306,12 +310,14 @@ const Navbar = () => {
               </li>
             ))}
             <li className="p-4 text-center">
-              <Link
-                href="/contact"
-                className="block bg-[#3877d4] text-white py-2 rounded-md font-semibold hover:bg-[#2f5fb8]"
-              >
-                CONTACT US
-              </Link>
+            {/* Contact Button */}
+            <Link
+              href="/contactUs"
+              className="flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
             </li>
           </ul>
         </div>

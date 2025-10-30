@@ -70,16 +70,13 @@ export default function HVACPage() {
           </h2>
           <div className="space-y-3">
             {productOfferings.map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.1 }}
                 className="flex items-start gap-2"
               >
                 <ChevronRight className="w-5 h-5 text-white mt-1" />
                 <p>{item}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
