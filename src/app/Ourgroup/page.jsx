@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 
+
 const companies = [
   {
     id: 1,
@@ -8,7 +9,7 @@ const companies = [
     description:
       "Global Enviro Air Systems Private Limited is a distinguished designer and manufacturer specializing in a diverse range of air pollution control systems. Our systems are meticulously crafted to reduce or eliminate the emission of pollutants into the atmosphere. Additionally, we serve as turnkey solution providers for HVAC Cleanrooms projects, offering a comprehensive range of solutions such as air handling units, Puff Panels, Doors, and Dust collectors tailored for manufacturing areas. We extend our expertise to provide solutions for cement/fly ash unloading systems from silos and racks. Our systems cater to various industries, including cement, power, steel, pharmaceuticals, paper, distilleries, food, and scientific industries.",
     image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=60",
+      "/assets/images/global image.jpg",
     shape: "rounded-full", // Circle shape
   },
   {
@@ -17,8 +18,7 @@ const companies = [
     description:
       "Indophil Jettech Energy Pvt. Ltd. is a leading player in Engineering, Procurement, and Construction (EPC) services for Biomass Power Plants, Solar Power Plants, Edible Oil Refineries, and Process Boilers. As a rapidly growing entity in the Philippines Energy Sector, our portfolio boasts over 55 MW (Biomass Power Plants) capacity and 15 MW (Solar Power Plants).",
     image:
-      "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60",
-    shape: "clip-trapezoid", // Custom trapezoid shape
+      "/assets/images/jettech.jpg",
   },
   {
     id: 3,
@@ -26,8 +26,8 @@ const companies = [
     description:
       "The company specialises in manufacturing Manganese Steel Castings and Hi-Chrome Castings. Cast iron items mainly include Rotary Airlock Valves, Dust Collector Cones, Bearing Housings, Liners, and Beaters, hammers for crushers with induction furnace capacity of 500 kgs, Heat Treatment facility, and in-house machining.",
     image:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=60",
-    shape: "clip-diagonal", // Custom diagonal cut shape
+      "/assets/images/metallurgy.jpg",
+    shape: "rounded-full", // Custom diagonal cut shape
   },
 ];
 
@@ -62,7 +62,7 @@ export default function GroupPage() {
             {/* Image Section */}
             <div className="md:w-1/2 flex justify-center">
               <div
-                className={`overflow-hidden w-80 h-80 object-cover ${
+                className={`overflow-hidden w-100 h-100 object-cover ${
                   company.shape
                 }`}
               >
