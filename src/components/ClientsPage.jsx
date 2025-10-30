@@ -2,6 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import OurClientsPage from "@/app/OurClients/page";
+
 
 const clientLogos = [
   // High-quality logo links (SVG/PNG)
@@ -81,6 +83,7 @@ const ClientsPage = () => {
       </div>
       {/* Animated Button */}
       <div className="flex justify-center mt-10">
+        <a href="/OurClients">
         <motion.button
           whileHover={{
             scale: 1.08,
@@ -89,11 +92,12 @@ const ClientsPage = () => {
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="px-8 py-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
-        //   onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
+          className="px-8 py-3 bg-gradient-to-tr from-primary to-accent text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
+           onClick={() => router.push("/OurClients")}
         >
           View All Clients
         </motion.button>
+            </a>
       </div>
     </div>
   );

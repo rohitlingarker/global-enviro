@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { motion } from "framer-motion";
+
 
 export default function HeaderSection({ title, description, imgSrc, description1 }) {
   return (
@@ -10,9 +10,7 @@ export default function HeaderSection({ title, description, imgSrc, description1
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-cyan-100 rounded-full blur-3xl opacity-70 animate-pulse"></div>
 
       {/* Left Content */}
-      <motion.div
-        initial={{ x: -80, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
+      <div
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="md:w-1/2 z-10 space-y-4"
       >
@@ -21,12 +19,11 @@ export default function HeaderSection({ title, description, imgSrc, description1
         </h1>
         <p className="text-gray-700 leading-relaxed text-lg">{description}</p>
         <p className="text-gray-700 leading-relaxed text-lg">{description1}</p>
-      </motion.div>
+      </div>
 
       {/* Right Image */}
-      <motion.div
+      <div
         initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         className="md:w-1/2 flex justify-center mt-10 md:mt-0"
       >
@@ -39,7 +36,7 @@ export default function HeaderSection({ title, description, imgSrc, description1
         />
         
 
-      </motion.div>
+      </div>
     </section>
   );
 }
