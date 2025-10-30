@@ -240,9 +240,13 @@ const Navbar = () => {
         </ul>
 
         {/* Contact Button */}
-        <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
+        <Link
+        href="/contactUs"
+          className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
+        >
           Contact Us
-        </div>
+        </Link>
+
 
         {/* Mobile Toggle */}
         <button
@@ -312,12 +316,14 @@ const Navbar = () => {
               </li>
             ))}
             <li className="p-4 text-center">
-              <Link
-                href="/contact"
-                className="block bg-[#3877d4] text-white py-2 rounded-md font-semibold hover:bg-[#2f5fb8]"
-              >
-                CONTACT US
-              </Link>
+            {/* Contact Button */}
+            <Link
+              href="/contactUs"
+              className="flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact Us
+            </Link>
             </li>
           </ul>
         </div>
