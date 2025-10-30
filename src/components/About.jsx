@@ -33,7 +33,7 @@ export default function About() {
 
         {/* Know More Button */}
         <motion.button
-          className="mt-6 w-40 py-3 px-6 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
+          className="mt-6 w-40 py-3 px-6 bg-primary text-white font-semibold rounded-lg shadow-lg hover:cursor-pointer transition-colors"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}

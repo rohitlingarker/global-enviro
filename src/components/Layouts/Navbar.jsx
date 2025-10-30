@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const navItems = [
   { title: 'Home', url: '/' },
@@ -11,7 +12,7 @@ const navItems = [
     url: '/about',
     dropdown: [
       { title: 'Overview', url: '/about/overview' },
-      { title: 'Mission & Vision', url: '/about/mission-vision' },
+      { title: 'Mission & Vision', url: '/about/MissionVision' },
       { title: 'Management', url: '/about/management' },
       { title: 'Our Infrastructure', url: '/about/infrastructure' },
       { title: 'Certifications', url: '/about/certifications' },
@@ -28,31 +29,64 @@ const navItems = [
   },
   {
     title: 'Services',
-    url: '/services',
+    url: '/service',
+    url: '/service',
     dropdown: [
-      { title: 'Air Pollution Control', url: '/services/air-control' },
-      { title: 'Material Handling', url: '/services/material-handling' },
-      { title: 'HVAC', url: '/services/hvac' },
-      { title: 'EPC Power', url: '/services/epc-power' },
+      {
+        title: 'Air Pollution Control',
+        url: '/service/AirPollutionControl',
+        subDropdown: [
+          { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/pulse-jet-bag' },
+          { title: 'Dust Extraction', url: '/service/AirPollutionControl/dust-extraction' },
+          { title: 'Ash Handling', url: '/service/AirPollutionControl/ash-handling' },
+          { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/centrifugal-fans' },
+          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/hvac-clean-room' },
+          { title: 'Clean Room Panel', url: '/service/AirPollutionControl/clean-room-panel' },
+        ],
+      },
+      {
+        title: 'Material Handling',
+        url: '/service/MaterialHandling',
+        subDropdown: [
+          { title: 'Conveyors', url: '/service/MaterialHandling/conveyors' },
+          { title: 'Bucket Elevators', url: '/service/MaterialHandling/bucket-elevators' },
+        ],
+      },
+      {
+        title: 'HVAC',
+        url: '/service/HVAC',
+        subDropdown: [
+          { title: 'HVAC System Components', url: '/service/HVAC/components' },
+          { title: 'Clean Room Equipments', url: '/service/HVAC/clean-room-equipments' },
+        ],
+      },
+      {
+        title: 'EPC Power',
+        url: '/service/EPCPower',
+        subDropdown: [
+          { title: 'Bag Filters', url: '/service/EPCPower/bag-filters' },
+          { title: 'Electrostatic Precipitators', url: '/service/EPCPower/electrostatic-precipitators' },
+        ],
+      },
     ],
   },
   { title: 'Projects', url: '/projects' },
   { title: 'Our Clients', url: '/clients' },
   { title: 'News and Events', url: '/news' },
-  { title: 'Careers', url: '/#' },
+  { title: 'Careers', url: '/careers' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
     let lastScrollTop = 0;
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      // Add shadow only when scrolling down
       if (currentScroll > 80 && currentScroll > lastScrollTop) {
         setIsScrolled(true);
       } else if (currentScroll < 50) {
@@ -65,7 +99,6 @@ const Navbar = () => {
   }, []);
 
   const primaryBlue = '#3877d4';
-  const secondaryBlue = '#386FC1';
 
   return (
     <header
@@ -75,18 +108,16 @@ const Navbar = () => {
           : 'relative bg-white'
       }`}
     >
-      {/* --- Top White Bar (hidden after scroll) --- */}
+      {/* --- Top Bar --- */}
       {!isScrolled && (
-        <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white transition-all">
-          <div className="flex flex-col items-start">
-            <a href="/" className="leading-none">
-              <img
-                src="/assets/images/group-logo.png"
-                alt="Global Enviro Logo"
-                className="h-[70px] w-auto"
-              />
-            </a>
-          </div>
+        <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white">
+          <Link href="/" className="leading-none">
+            <img
+              src="/assets/images/group-logo.png"
+              alt="Global Enviro Logo"
+              className="h-[70px] w-auto"
+            />
+          </Link>
 
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2 text-gray-700">
@@ -104,17 +135,16 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* --- Main Navigation Bar --- */}
+      {/* --- Main Nav --- */}
       <nav
-        aria-label="Main Navigation"
-        className={`flex items-center justify-between px-6 lg:px-20 transition-all duration-300`}
+        className="flex items-center justify-between px-6 lg:px-20 transition-all duration-300"
         style={{
           backgroundColor: primaryBlue,
           height: isScrolled ? '45px' : '60px',
         }}
       >
-        {/* Logo (Visible on small screens only) */}
-        <a href="/" className="block lg:hidden">
+        {/* Mobile Logo */}
+        <Link href="/" className="block lg:hidden">
           <img
             src="/assets/images/group-logo.png"
             alt="Global Enviro"
@@ -122,49 +152,84 @@ const Navbar = () => {
               isScrolled ? 'h-6' : 'h-8'
             }`}
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
           {navItems.map((item) => {
             const isActive = pathname === item.url;
-
             return (
               <li
                 key={item.title}
                 className="relative group"
                 onMouseEnter={() => setActiveDropdown(item.title)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseLeave={() => {
+                  setActiveDropdown(null);
+                  setActiveSubDropdown(null);
+                }}
               >
-                <a
+                <Link
                   href={item.url}
-                  className={`px-2 py-1 transition-colors rounded-md ${
+                  className={`px-2 py-1 transition-colors rounded-md flex items-center gap-1 ${
                     isActive
                       ? 'bg-[#386FC1]'
                       : 'hover:bg-[#386FC1] hover:shadow-sm'
                   }`}
                 >
                   {item.title} {item.dropdown && <span>▼</span>}
-                </a>
+                </Link>
 
-                {/* Dropdown Menu */}
+                {/* --- Dropdown --- */}
                 {item.dropdown && (
                   <ul
-                    aria-label={`${item.title} submenu`}
-                    className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[200px] transform transition-all duration-300 ${
+                    className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[220px] transition-all duration-300 ${
                       activeDropdown === item.title
                         ? 'opacity-100 translate-y-0 visible'
                         : 'opacity-0 -translate-y-2 invisible'
                     }`}
                   >
                     {item.dropdown.map((subItem) => (
-                      <li key={subItem.title}>
-                        <a
+                      <li
+                        key={subItem.title}
+                        className="relative group/item"
+                        onMouseEnter={() =>
+                          subItem.subDropdown &&
+                          setActiveSubDropdown(subItem.title)
+                        }
+                        onMouseLeave={() =>
+                          subItem.subDropdown &&
+                          setActiveSubDropdown(null)
+                        }
+                      >
+                        <Link
                           href={subItem.url}
-                          className="block px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                          className="block px-4 py-2 text-sm hover:bg-gray-100 transition-colors flex justify-between items-center"
                         >
                           {subItem.title}
-                        </a>
+                          {subItem.subDropdown && <span>▶</span>}
+                        </Link>
+
+                        {/* --- Sub Dropdown --- */}
+                        {subItem.subDropdown && (
+                          <ul
+                            className={`absolute top-0 left-full bg-white shadow-md rounded-md min-w-[200px] transition-all duration-300 ${
+                              activeSubDropdown === subItem.title
+                                ? 'opacity-100 visible translate-x-0'
+                                : 'opacity-0 invisible -translate-x-2'
+                            }`}
+                          >
+                            {subItem.subDropdown.map((deepItem) => (
+                              <li key={deepItem.title}>
+                                <Link
+                                  href={deepItem.url}
+                                  className="block px-4 py-2 text-sm hover:bg-gray-100"
+                                >
+                                  {deepItem.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -174,22 +239,21 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Contact Us Button */}
+        {/* Contact Button */}
         <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
-          CONTACT US
+          Contact Us
         </div>
 
         {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle navigation menu"
         >
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </nav>
 
-      {/* --- Mobile Dropdown Menu --- */}
+      {/* --- Mobile Menu --- */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
           <ul className="flex flex-col">
@@ -211,12 +275,36 @@ const Navbar = () => {
                   <ul className="bg-gray-50 transition-all duration-300">
                     {item.dropdown.map((subItem) => (
                       <li key={subItem.title}>
-                        <a
-                          href={subItem.url}
-                          className="block px-7 py-2 text-sm hover:bg-gray-200"
+                        <button
+                          onClick={() =>
+                            setActiveSubDropdown(
+                              activeSubDropdown === subItem.title
+                                ? null
+                                : subItem.title
+                            )
+                          }
+                          className="w-full text-left px-7 py-2 text-sm flex justify-between items-center"
                         >
                           {subItem.title}
-                        </a>
+                          {subItem.subDropdown && <span>▶</span>}
+                        </button>
+
+                        {subItem.subDropdown &&
+                          activeSubDropdown === subItem.title && (
+                            <ul className="bg-gray-100">
+                              {subItem.subDropdown.map((deepItem) => (
+                                <li key={deepItem.title}>
+                                  <Link
+                                    href={deepItem.url}
+                                    className="block px-10 py-2 text-sm hover:bg-gray-200"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                  >
+                                    {deepItem.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                       </li>
                     ))}
                   </ul>

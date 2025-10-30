@@ -63,7 +63,6 @@ const ClientsRow = ({ logos, reverse }) => (
 const ClientsPage = () => {
   // Split logos into three roughly equal groups
   const third = Math.ceil(clientLogos.length / 3);
-  const row1 = clientLogos.slice(0, third);
   const row2 = clientLogos.slice(third, third * 2);
   const row3 = clientLogos.slice(third * 2);
 
@@ -76,8 +75,6 @@ const ClientsPage = () => {
     Empowering Sustainable Growth Through Innovation and Trust
   </p>
       <div className="space-y-10">
-        <ClientsRow logos={row1} reverse={false} />
-        <br></br>
         <ClientsRow logos={row2} reverse={true} />
         <br></br>
         <ClientsRow logos={row3} reverse={false} />
@@ -92,7 +89,7 @@ const ClientsPage = () => {
           }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 200 }}
-          className="px-8 py-3 bg-gradient-to-r from-blue-700 to-blue-500 text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
+          className="px-8 py-3 bg-gradient-to-tr from-primary to-accent text-white font-semibold rounded-full shadow-md bg-[length:200%_200%] transition-all duration-500"
         //   onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
         >
           View All Clients
