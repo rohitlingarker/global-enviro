@@ -128,10 +128,14 @@ const Navbar = () => {
               <FaEnvelope className="text-[#3877d4]" />
               <span>info@global.com</span>
             </div>
-            <button className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all">
+            <Link
+              href="/RequestQuote"
+              className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
+            >
               REQUEST A QUOTE
-            </button>
-          </div>
+            </Link>
+
+            </div>
         </div>
       )}
 
