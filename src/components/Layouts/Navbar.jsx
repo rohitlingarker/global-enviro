@@ -1,11 +1,11 @@
 'use client';
-
+ 
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
+ 
 const navItems = [
   { title: 'Home', url: '/' },
   {
@@ -71,18 +71,19 @@ const navItems = [
     ],
   },
   { title: 'Projects', url: '/projects' },
-  { title: 'Our Clients', url: '/clients' },
-  { title: 'News and Events', url: '/news' },
+  { title: 'Our Clients', url: '/OurClients' },
+  // ✅ Updated route here
+  { title: 'News & Events', url: '/news-and-events' },
   { title: 'Careers', url: '/careers' },
 ];
-
+ 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const pathname = usePathname();
-
+ 
   useEffect(() => {
     let lastScrollTop = 0;
     const handleScroll = () => {
@@ -94,22 +95,22 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+ 
   const primaryBlue = '#3877d4';
-
+ 
   return (
     <header
       className={`w-full top-0 left-0 z-50 transition-all duration-500 ${
         isScrolled ? 'fixed bg-white/90 backdrop-blur-md shadow-md' : 'relative bg-white'
       }`}
     >
-      {/* Top contact section */}
+      {/* --- Top Bar --- */}
       {!isScrolled && (
         <div className="flex flex-wrap justify-between items-center px-6 lg:px-20 py-0 border-b border-gray-200 bg-white">
           <Link href="/" className="leading-none">
             <img src="/assets/images/group-logo.png" alt="Global Enviro Logo" className="h-[65px] w-auto" />
           </Link>
-
+ 
           <div className="hidden md:flex items-center gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-gray-700">
               <FaPhone className="text-[#3877d4]" />
@@ -119,14 +120,18 @@ const Navbar = () => {
               <FaEnvelope className="text-[#3877d4]" />
               <span className="text-sm">info@global.com</span>
             </div>
-            <button className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all text-sm">
+            <Link
+              href="/RequestQuote"
+              className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
+            >
               REQUEST A QUOTE
-            </button>
-          </div>
+            </Link>
+ 
+            </div>
         </div>
       )}
-
-      {/* Main navbar */}
+ 
+      {/* --- Main Nav --- */}
       <nav
         className="flex items-center justify-between px-4 sm:px-8 lg:px-20 transition-all duration-300"
         style={{
@@ -134,7 +139,7 @@ const Navbar = () => {
           height: isScrolled ? '48px' : '60px',
         }}
       >
-        {/* Logo for mobile */}
+        {/* Mobile Logo */}
         <Link href="/" className="block lg:hidden">
           <img
             src="/assets/images/group-logo.png"
@@ -142,9 +147,9 @@ const Navbar = () => {
             className={`transition-all duration-300 ${isScrolled ? 'h-6' : 'h-8'}`}
           />
         </Link>
-
-        {/* Desktop Navigation */}
-        <ul className="hidden lg:flex items-center justify-center gap-5 xl:gap-8 text-[14px] font-semibold uppercase">
+ 
+        {/* Desktop Nav */}
+        <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
           {navItems.map((item) => {
             const isActive = pathname === item.url;
             return (
@@ -174,8 +179,8 @@ const Navbar = () => {
                     />
                   )}
                 </Link>
-
-                {/* Dropdown with fade-slide */}
+ 
+                {/* --- Dropdown --- */}
                 {item.dropdown && (
                   <ul
                     className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[220px] border border-gray-100 transform transition-all duration-300 ease-in-out ${
@@ -198,17 +203,16 @@ const Navbar = () => {
                           <span>{subItem.title}</span>
                           {subItem.subDropdown && <ChevronRight size={14} strokeWidth={2} />}
                         </Link>
-
-                       {/* Sub Dropdown with animation (slightly lower) */}
-{subItem.subDropdown && (
-  <ul
-    className={`absolute top-3 left-full bg-white shadow-lg rounded-md min-w-[200px] border border-gray-100 transition-all duration-300 ease-in-out ${
-      activeSubDropdown === subItem.title
-        ? 'opacity-100 visible translate-x-0'
-        : 'opacity-0 invisible -translate-x-3'
-    }`}
-  >
-
+ 
+                        {/* --- Sub Dropdown --- */}
+                        {subItem.subDropdown && (
+                          <ul
+                            className={`absolute top-0 left-full bg-white shadow-md rounded-md min-w-[200px] transition-all duration-300 ${
+                              activeSubDropdown === subItem.title
+                                ? 'opacity-100 visible translate-x-0'
+                                : 'opacity-0 invisible -translate-x-2'
+                            }`}
+                          >
                             {subItem.subDropdown.map((deepItem) => (
                               <li key={deepItem.title}>
                                 <Link
@@ -229,17 +233,18 @@ const Navbar = () => {
             );
           })}
         </ul>
-
-        {/* Contact Button */}
-        <Link
-        href="/contactUs"
-          className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
-        >
-          Contact Us
-        </Link>
-
-
-        {/* Mobile Menu Toggle */}
+ 
+          {/* Contact Button */}
+          <Link
+            href="/contact"
+            className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
+          >
+            Contact Us
+          </Link>
+ 
+ 
+ 
+        {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -247,8 +252,8 @@ const Navbar = () => {
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </nav>
-
-      {/* Mobile Menu with fade-in */}
+ 
+      {/* --- Mobile Menu --- */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
           <ul className="flex flex-col">
@@ -270,7 +275,7 @@ const Navbar = () => {
                     />
                   )}
                 </button>
-
+ 
                 {item.dropdown && activeDropdown === item.title && (
                   <ul className="bg-gray-50 transition-all duration-300">
                     {item.dropdown.map((subItem) => (
@@ -286,7 +291,7 @@ const Navbar = () => {
                           {subItem.title}
                           {subItem.subDropdown && <ChevronRight size={14} />}
                         </button>
-
+ 
                         {subItem.subDropdown &&
                           activeSubDropdown === subItem.title && (
                             <ul className="bg-gray-100 transition-all duration-300">
@@ -325,5 +330,5 @@ const Navbar = () => {
     </header>
   );
 };
-
+ 
 export default Navbar;
