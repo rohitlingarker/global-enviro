@@ -1,269 +1,158 @@
-'use client'
+'use client';
 import React from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaTwitter, FaLinkedinIn, FaAngleRight } from 'react-icons/fa';
-// import Link from 'next/link'; // Use if necessary for routing
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaLinkedinIn,
+  FaAngleRight,
+} from 'react-icons/fa';
 
 const Footer = () => {
-    const primaryBlue = '#204170'; 
-    const secondaryBlue = '#01579b'; 
-    const accentGreen = '#a2dbee'; // Attractive green for 'Enviro' theme
-    const darkGray = '#333333';
-    const lightText = '#f4f4f4';
+  const sections = [
+    {
+      title: 'Quick Navigation',
+      links: [
+        { name: 'About Company', url: '/about' },
+        { name: 'Mission & Vision', url: '/about/MissionVision' },
+        { name: 'Leadership Team', url: '/about/management' },
+        { name: 'Projects', url: '/projects' },
+        { name: 'News & Events', url: '/news' },
+        { name: 'Contact Us', url: '/contact' },
+      ],
+    },
+    {
+      title: 'Our Services',
+      links: [
+        { name: 'Air Pollution Control Systems', url: '/services/air-control' },
+        { name: 'Material Handling Systems', url: '/services/material-handling' },
+        { name: 'HVAC & Ventilation Solutions', url: '/services/hvac' },
+        { name: 'EPC Power Projects', url: '/services/epc' },
+        { name: 'Environmental Consulting', url: '/services/consulting' },
+      ],
+    },
+    {
+      title: 'Insights & Updates',
+      links: [
+        { name: 'Case Studies', url: '/insights/case-studies' },
+        { name: 'Client Testimonials', url: '/insights/testimonials' },
+        { name: 'Industry Articles', url: '/insights/articles' },
+        { name: 'Awards & Recognitions', url: '/insights/awards' },
+      ],
+    },
+  ];
 
-    const styles = {
-        footerContainer: {
-            fontFamily: 'Arial, sans-serif',
-        },
-        // --- Top Bar (Dark Blue) ---
-        footerTop: {
-            backgroundColor: primaryBlue,
-            color: lightText,
-            padding: '40px 5%',
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '30px',
-        },
-        // --- Bottom Bar (Copyright - Dark Gray) ---
-        footerBottom: {
-            backgroundColor: darkGray,
-            textAlign: 'center',
-            padding: '15px 5%',
-            fontSize: '13px',
-            color: '#bbbbbb',
-        },
-        column: {
-            flex: 1,
-            minWidth: '220px',
-        },
-        // --- Column 1: Logo/Info ---
-        logoSection: {
-            marginBottom: '20px',
-        },
-        logoImage: {
-            height: '45px',
-            width: 'auto',
-            marginBottom: '10px',
-            filter: 'invert(100%)', // Ensure logo is white on blue background
-        },
-        tagline: {
-            fontSize: '14px',
-            lineHeight: '1.6',
-            marginBottom: '20px',
-            color: lightText,
-        },
-        contactItem: {
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '10px',
-            fontSize: '14px',
-        },
-        icon: {
-            marginRight: '12px',
-            color: accentGreen, // Using green as the highlight color
-            fontSize: '16px',
-        },
+  return (
+    <footer className="font-sans text-gray-100">
+      {/* --- Main Footer --- */}
+      <div className="bg-[#204170] px-6 md:px-10 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
-        // --- Column 2 & 3: Links ---
-        columnTitle: {
-            fontSize: '18px',
-            fontWeight: '700',
-            marginBottom: '25px',
-            color: accentGreen, // Titles highlighted in green
-        },
-        linkList: {
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
-        },
-        linkItem: {
-            marginBottom: '10px',
-        },
-        linkAnchor: {
-            textDecoration: 'none',
-            color: lightText,
-            fontSize: '14px',
-            display: 'flex',
-            alignItems: 'center',
-            transition: 'color 0.2s',
-        },
-        linkIcon: {
-            marginRight: '8px',
-            fontSize: '10px',
-            color: secondaryBlue,
-            transition: 'color 0.2s',
-        },
-        // Hover effect for the link
-        linkHover: {
-            color: accentGreen,
-        },
+        {/* --- Company Info --- */}
+        <div className="relative">
+          <img
+            src="/assets/images/group-logo.png"
+            alt="Global Enviro Logo"
+            className="h-12 mb-4 brightness-0 invert"
+          />
+          <p className="text-sm leading-relaxed mb-6 text-gray-100/90">
+            Delivering innovative environmental engineering solutions that help
+            industries achieve sustainable growth while reducing their
+            environmental impact.
+          </p>
 
-        // --- Column 4: Newsletter/Social ---
-        newsletterInput: {
-            width: '100%',
-            padding: '10px',
-            borderRadius: '5px',
-            border: 'none',
-            marginBottom: '10px',
-            fontSize: '14px',
-            boxSizing: 'border-box',
-        },
-        subscribeButton: {
-            backgroundColor: accentGreen,
-            color: 'white',
-            border: 'none',
-            padding: '10px 15px',
-            borderRadius: '5px',
-            width: '100%',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            transition: 'background-color 0.3s',
-        },
-        socialLinks: {
-            marginTop: '25px',
-            display: 'flex',
-            gap: '15px',
-        },
-        socialIcon: {
-            color: primaryBlue,
-            backgroundColor: lightText,
-            padding: '10px',
-            borderRadius: '50%',
-            fontSize: '18px',
-            transition: 'background-color 0.3s, color 0.3s',
-        },
-        socialIconHover: {
-            backgroundColor: secondaryBlue,
-            color: 'white',
-        }
-    };
-
-    // Helper component for managing link hover state
-    const FooterLink = ({ title, url }) => {
-        const [isHovered, setIsHovered] = React.useState(false);
-        return (
-            <li style={styles.linkItem}>
-                <a 
-                    href={url} 
-                    style={{
-                        ...styles.linkAnchor,
-                        ...(isHovered ? styles.linkHover : {})
-                    }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    <FaAngleRight style={{
-                        ...styles.linkIcon,
-                        ...(isHovered ? { color: accentGreen } : {})
-                    }} />
-                    {title}
-                </a>
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-center gap-3">
+              <FaMapMarkerAlt className="text-[#a2dbee]" />
+              #45, GreenTech Industrial Zone, Bengaluru, India
             </li>
-        );
-    };
+            <li className="flex items-center gap-3">
+              <FaPhone className="text-[#a2dbee]" />
+              +91 98764 43564
+            </li>
+            <li className="flex items-center gap-3">
+              <FaEnvelope className="text-[#a2dbee]" />
+              info@globalenviro.com
+            </li>
+          </ul>
+        </div>
 
-    // Helper component for social icons with hover effect
-    const SocialIcon = ({ icon: Icon, url, style }) => {
-        const [isHovered, setIsHovered] = React.useState(false);
+        {/* --- Quick Nav + Services --- */}
+        {sections.slice(0, 2).map((sec, idx) => (
+          <div key={idx} className="relative">
+            <h4 className="text-[#a2dbee] text-lg font-semibold mb-5">
+              {sec.title}
+            </h4>
+            <ul className="space-y-3">
+              {sec.links.map((link, i) => (
+                <li key={i}>
+                  <a
+                    href={link.url}
+                    className="flex items-center gap-2 text-sm text-gray-100 hover:text-[#a2dbee] transition-all duration-300 group"
+                  >
+                    <FaAngleRight className="text-[#a2dbee] transform transition-transform duration-300 group-hover:translate-x-1" />
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
 
-        return (
-            <a 
-                href={url} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <Icon 
-                    style={{
-                        ...style.socialIcon,
-                        ...(isHovered ? style.socialIconHover : {})
-                    }} 
-                />
-            </a>
-        );
-    };
+        {/* --- Insights + Get in Touch --- */}
+        <div className="relative">
+          <h4 className="text-[#a2dbee] text-lg font-semibold mb-5">
+            {sections[2].title}
+          </h4>
+          <ul className="space-y-3 mb-6">
+            {sections[2].links.map((link, i) => (
+              <li key={i}>
+                <a
+                  href={link.url}
+                  className="flex items-center gap-2 text-sm text-gray-100 hover:text-[#a2dbee] transition-all duration-300 group"
+                >
+                  <FaAngleRight className="text-[#a2dbee] transform transition-transform duration-300 group-hover:translate-x-1" />
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-    return (
-        <footer style={styles.footerContainer}>
-            <div style={styles.footerTop}>
-                {/* 1. Company Information Column */}
-                <div style={styles.column}>
-                    <div style={styles.logoSection}>
-                        <img 
-                            src="/assets/images/group-logo.png" // Use your logo path
-                            alt="Global Enviro Logo" 
-                            style={styles.logoImage}
-                        />
-                    </div>
-                    <p style={styles.tagline}>
-                        Trusted engineering solutions for a greener future. Specializing in Air Pollution Control, Material Handling, and HVAC systems since 1999.
-                    </p>
-                    
-                    <div style={styles.contactItem}>
-                        <FaMapMarkerAlt style={styles.icon} />
-                        <span>[Company Address]</span>
-                    </div>
-                    <div style={styles.contactItem}>
-                        <FaPhone style={styles.icon} />
-                        <span>+91 98764-43564</span>
-                    </div>
-                    <div style={styles.contactItem}>
-                        <FaEnvelope style={styles.icon} />
-                        <span>info@global.com</span>
-                    </div>
-                </div>
-
-                {/* 2. Quick Links Column */}
-                <div style={styles.column}>
-                    <h4 style={styles.columnTitle}>Quick Navigation</h4>
-                    <ul style={styles.linkList}>
-                        <FooterLink title="Our Mission & Vision" url="/about/mission-vision" />
-                        <FooterLink title="Our Infrastructure" url="/about/infrastructure" />
-                        <FooterLink title="News and Events" url="/news" />
-                        <FooterLink title="Projects Portfolio" url="/projects" />
-                        <FooterLink title="Careers / Management" url="/about/management" />
-                        <FooterLink title="Contact Us" url="/contact" />
-                    </ul>
-                </div>
-
-                {/* 3. Group & Services Column */}
-                <div style={styles.column}>
-                    <h4 style={styles.columnTitle}>Group & Services</h4>
-                    <ul style={styles.linkList}>
-                        <FooterLink title="Air Pollution Control" url="/services/air-control" />
-                        <FooterLink title="Material Handling" url="/services/material-handling" />
-                        <FooterLink title="HVAC Systems" url="/services/hvac" />
-                        <FooterLink title="EPC Power Solutions" url="/services/epc-power" />
-                        <FooterLink title="JetTech Group" url="/group/jettech" />
-                        <FooterLink title="Global Metallurgy" url="/group/global-metallurgy" />
-                    </ul>
-                </div>
-                
-                {/* 4. Newsletter/Social Column */}
-                <div style={styles.column}>
-                    <h4 style={styles.columnTitle}>Stay Connected</h4>
-                    <p style={styles.tagline}>Subscribe to our newsletter for latest updates.</p>
-                    <input 
-                        type="email" 
-                        placeholder="Enter Email Address" 
-                        style={styles.newsletterInput}
-                    />
-                    <button style={styles.subscribeButton}>SUBSCRIBE NOW</button>
-
-                    <div style={styles.socialLinks}>
-                         <SocialIcon icon={FaFacebookF} url="#" style={styles} />
-                         <SocialIcon icon={FaTwitter} url="#" style={styles} />
-                         <SocialIcon icon={FaLinkedinIn} url="#" style={styles} />
-                    </div>
-                </div>
+          {/* --- Get in Touch (moved seamlessly below links) --- */}
+          <div className="mt-4">
+            <h4 className="text-[#a2dbee] text-lg font-semibold mb-3">
+              Get in Touch
+            </h4>
+            <p className="text-sm text-gray-100/90 mb-5 leading-relaxed">
+              Have a question or want to discuss a project? Reach out to us anytime.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="/contact"
+                className="bg-[#a2dbee] text-[#0b203a] font-semibold px-5 py-2 rounded-full hover:bg-[#bde3f6] transition-all duration-300 shadow-md text-center"
+              >
+                Contact Us
+              </a>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-100/10 text-[#a2dbee] hover:bg-[#a2dbee] hover:text-[#0b203a] p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-center"
+              >
+                <FaLinkedinIn />
+              </a>
             </div>
+          </div>
+        </div>
+      </div>
 
-            {/* Copyright and Bottom Info */}
-            <div style={styles.footerBottom}>
-                &copy; {new Date().getFullYear()} GLOBAL ENVIRO GROUP. All Rights Reserved. | Designed and Developed by [Developer Name]
-            </div>
-        </footer>
-    );
+      {/* --- Bottom Bar --- */}
+      <div className="bg-[#18355e] border-t border-gray-700 text-gray-400 py-3 text-sm text-center">
+        &copy; {new Date().getFullYear()}{' '}
+        <span className="text-gray-200 font-medium">GLOBAL ENVIRO GROUP</span>. All Rights Reserved.
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
