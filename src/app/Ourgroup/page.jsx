@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 
@@ -11,6 +12,7 @@ const companies = [
     image:
       "/assets/images/global image.jpg",
     shape: "rounded-full", // Circle shape
+    link: "/group/global-enviro",
   },
   {
     id: 2,
@@ -19,6 +21,7 @@ const companies = [
       "Indophil Jettech Energy Pvt. Ltd. is a leading player in Engineering, Procurement, and Construction (EPC) services for Biomass Power Plants, Solar Power Plants, Edible Oil Refineries, and Process Boilers. As a rapidly growing entity in the Philippines Energy Sector, our portfolio boasts over 55 MW (Biomass Power Plants) capacity and 15 MW (Solar Power Plants).",
     image:
       "/assets/images/jettech.jpg",
+     link: "/group/Jet tech",
   },
   {
     id: 3,
@@ -28,6 +31,7 @@ const companies = [
     image:
       "/assets/images/metallurgy.jpg",
     shape: "rounded-full", // Custom diagonal cut shape
+     link: "/Ourgroup/GlobalMetallurgy",
   },
 ];
 
@@ -54,9 +58,9 @@ export default function GroupPage() {
               <p className="text-muted-foreground leading-relaxed text-justify">
                 {company.description}
               </p>
-              <button className="mt-3 bg-primary text-primary-foreground px-5 py-2 rounded-md hover:opacity-90 transition">
+              <Link href={company.link} className="mt-3 bg-primary text-primary-foreground px-5 py-2 rounded-md hover:opacity-90 transition">
                 View More
-              </button>
+              </Link>
             </div>
 
             {/* Image Section */}
