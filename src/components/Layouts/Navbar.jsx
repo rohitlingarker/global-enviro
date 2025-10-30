@@ -70,7 +70,7 @@ const navItems = [
       },
     ],
   },
-  { title: 'Projects', url: '/projects' },
+  { title: 'Projects', url: '/Project' },
   { title: 'Our Clients', url: '/OurClients' },
   // ✅ Updated route here
   { title: 'News & Events', url: '/news-and-events' },
