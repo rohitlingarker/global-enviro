@@ -124,14 +124,7 @@ const Navbar = () => {
               href="/RequestQuote"
               className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
             >
-            <Link
-              href="/RequestQuote"
-              className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
-            >
               REQUEST A QUOTE
-            </Link>
-
-            </div>
             </Link>
  
             </div>
@@ -240,17 +233,6 @@ const Navbar = () => {
             );
           })}
         </ul>
-
-          {/* Contact Button */}
-          <Link
-            href="/contact"
-            className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
-          >
-            Contact Us
-          </Link>
-
-
-
  
           {/* Contact Button */}
           <Link
