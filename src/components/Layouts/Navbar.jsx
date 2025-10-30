@@ -224,12 +224,14 @@ const Navbar = () => {
               </li>
             ))}
             <li className="p-4 text-center">
-              <a
-                href="#"
-                className="block bg-[#3877d4] text-white py-2 rounded-md font-semibold hover:bg-[#2f5fb8]"
-              >
-                CONTACT US
-              </a>
+            <a
+              href="/contact"
+              className="block bg-[#3877d4] text-white py-2 px-4 rounded-md font-semibold hover:bg-[#285bb5] transition-colors"
+            >
+              CONTACT US
+            </a>
+
+
             </li>
           </ul>
         </div>
