@@ -53,27 +53,27 @@ const Project = () => {
   const centerIndex = offset;
 
   return (
-    <section className="w-full py-20 bg-background text-foreground transition-colors">
-      {/* Full-width container */}
-      <div className="w-full px-4 md:px-8">
+    <section className="w-full py-16 bg-background text-foreground transition-colors overflow-hidden">
+      {/* Container */}
+      <div className="w-full px-4 md:px-8 max-w-[1600px] mx-auto">
         {/* Heading */}
-        <div className="flex justify-between items-center mb-10 max-w-[1600px] mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-accent mb-2">
+        <div className="flex justify-between items-center mb-9">
+          <h2 className="text-xl  md:text-5xl font-bold text-accent">
             Our Projects
           </h2>
           <a
             href="#"
-            className="inline-flex font-medium items-center text-xl text-accent hover:text-primary"
+            className="inline-flex font-medium items-center text-xl text-accent hover:text-primary transition"
           >
-            All Project
+            All Projects
             <ArrowRight className="ml-2 w-4 h-4" />
           </a>
         </div>
 
-        {/* Horizontal Carousel */}
-        <div className="overflow-hidden">
+        {/* Carousel */}
+        <div className="flex justify-center ">
           <motion.div
-            className="flex gap-18"
+            className="flex gap-20"
             animate={{ x: -offset * cardWidth }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
           >
@@ -83,27 +83,27 @@ const Project = () => {
               return (
                 <motion.div
                   key={index}
-                  className="min-w-[450px] min-h-[400px] bg-card rounded-xl overflow-hidden shadow-md border border-border transition-transform duration-500"
-                  whileHover={{ scale: 1.2 }}
-                  animate={{ scale: isCenter ? 1.1 : 1 }}
+                  className="min-w-[400px] min-h-[30px] bg-card rounded-xl overflow-hidden shadow-md border border-border transition-transform duration-500"
+                  whileHover={{ scale: 1.02 }}
+                  animate={{ scale: isCenter ? 1.02 : 1 }}
                 >
                   <div className="overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-56 object-cover transition-transform duration-500"
+                      className="w-full h-52 object-cover transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-5">
                     <h3 className="text-xl font-semibold text-accent mb-2">
                       {project.title}
                     </h3>
-                    <p className="text-black mb-4">
+                    <p className="text-gray-700 mb-4">
                       {project.description}
                     </p>
                     <a
                       href="#"
-                      className="inline-flex items-center text-primary-foreground bg-primary hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition"
+                      className="inline-flex items-center text-white bg-primary hover:bg-primary/90 px-4 py-2 rounded-md text-sm font-medium transition"
                     >
                       READ MORE
                     </a>
