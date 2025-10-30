@@ -32,7 +32,7 @@ const navItems = [
           { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/1' },
           { title: 'Dust Extraction', url: '/service/AirPollutionControl/2' },
           { title: 'Ash Handling', url: '/service/AirPollutionControl/ash-handling' },
-          { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/centrifugal-fans' },
+          { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/4' },
           { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/5' },
           { title: 'Clean Room Panel', url: '/service/AirPollutionControl/clean-room-panel' },
         ],
@@ -234,10 +234,8 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
- 
- 
- 
-        {/* Mobile Toggle */}
+
+        {/* Mobile Toggle */} 
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
