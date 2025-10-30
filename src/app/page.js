@@ -5,48 +5,72 @@ import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 import ServicesSection from "@/components/ServiceSection";
 import Project from "@/components/Project";
 import About from "@/components/About";
-import Ourgroup from "@/app/Ourgroup/page";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ClientsPage from "@/components/ClientsPage";
 
 export default function Home() {
   const slides = [
     {
       image:
         "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png",
-      title: "Slide 1",
-      subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam fugit laboriosam animi molestias doloremque sapiente doloribus velit nisi necessitatibus modi.",
-      buttonText: "Button Text 1",
-      buttonLink: "#",
+      title: "Global Enviro",
+      subtitle: `With over a decade of excellence, Global Enviro Group leads the industry in air pollution control, HVAC systems, bulk material handling, and industrial solutions.
+We deliver innovative, client-focused services backed by deep technical expertise and proven performance.
+`,
+      buttonText: "Know More",
+      buttonLink: "/about",
     },
     {
       image:
         "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png",
-      title: "Slide 2",
-      subtitle: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam fugit laboriosam animi molestias doloremque sapiente doloribus velit nisi necessitatibus modi.",
-      buttonText: "Button Text 2",
-      buttonLink: "#",
+      title: "Air Pollution Control",
+      subtitle: `Innovative systems designed to reduce emissions and safeguard air quality.
+Empowering industries to meet environmental standards with efficiency and reliability.`,
+      buttonText: "Know More",
+      buttonLink: "/service/AirPollution",
     },
     {
       image:
         "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png",
-      title: "Slide 3",
-      subtitle: "Subtitle 3",
+      title: "HVAC Systems",
+      subtitle: `High-performance cleanroom and HVAC solutions built for precision and energy savings.
+Creating controlled environments that improve comfort, safety, and efficiency.`,
+      buttonText: "Know More",
+      buttonLink: "/service/HVAC",
+    },
+    {
+      image:
+        "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png",
+      title: "Material Handling",
+      subtitle: `Comprehensive solutions for smooth, safe, and efficient bulk material movement.
+Optimized designs that enhance productivity and reduce operational downtime.`,
+      buttonText: "Know More",
+      buttonLink: "/service/MaterialHandling",
+    },
+
+    {
+      image:
+        "https://storage.googleapis.com/uxpilot-auth.appspot.com/3e425a459b-733ddb1f886d42169401.png",
+      title: "EPC Power Projects",
+      subtitle: `Complete EPC expertise from concept to commissioning of industrial power plants.
+Delivering reliable, scalable infrastructure that drives sustainable growth and performance.`,
+      buttonText: "Know More",
+      buttonLink: "/service/EPCPower",
     },
   ];
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
-      
-      {/* Used the updated component name */}
-      {/* <Navbar />  */}
-
-      
-      <HeroCarousel slides={slides} interval={2000} pauseOnHover={false} pauseOnBtnHover={true} />
-      {/* <AboutUs /> */}
+      <HeroCarousel
+        slides={slides}
+        interval={4000}
+        pauseOnHover={false}
+        pauseOnBtnHover={true}
+      />
+      {/* <AboutUs />  */}
       <About />
-      <ServicesSection />
-      <Project/>
-     
+      {/* <ServicesSection /> */}
+      {/* <Project /> */}
+      <ClientsPage />
     </main>
   );
 }
