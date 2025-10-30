@@ -2,7 +2,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
-export default function ContactUs() {
+export default function ContactUS() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 px-6 flex flex-col items-center">
       
