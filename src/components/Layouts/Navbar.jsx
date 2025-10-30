@@ -1,11 +1,11 @@
 'use client';
-
+ 
 import React, { useState, useEffect } from 'react';
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
+ 
 const navItems = [
   { title: 'Home', url: '/' },
   {
@@ -76,14 +76,14 @@ const navItems = [
   { title: 'News & Events', url: '/news-and-events' },
   { title: 'Careers', url: '/careers' },
 ];
-
+ 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const pathname = usePathname();
-
+ 
   useEffect(() => {
     let lastScrollTop = 0;
     const handleScroll = () => {
@@ -95,9 +95,9 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+ 
   const primaryBlue = '#3877d4';
-
+ 
   return (
     <header
       className={`w-full top-0 left-0 z-50 transition-all duration-500 ${
@@ -110,7 +110,7 @@ const Navbar = () => {
           <Link href="/" className="leading-none">
             <img src="/assets/images/group-logo.png" alt="Global Enviro Logo" className="h-[65px] w-auto" />
           </Link>
-
+ 
           <div className="hidden md:flex items-center gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-gray-700">
               <FaPhone className="text-[#3877d4]" />
@@ -120,13 +120,17 @@ const Navbar = () => {
               <FaEnvelope className="text-[#3877d4]" />
               <span className="text-sm">info@global.com</span>
             </div>
-            <button className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all text-sm">
+            <Link
+              href="/RequestQuote"
+              className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
+            >
               REQUEST A QUOTE
-            </button>
-          </div>
+            </Link>
+ 
+            </div>
         </div>
       )}
-
+ 
       {/* --- Main Nav --- */}
       <nav
         className="flex items-center justify-between px-4 sm:px-8 lg:px-20 transition-all duration-300"
@@ -143,7 +147,7 @@ const Navbar = () => {
             className={`transition-all duration-300 ${isScrolled ? 'h-6' : 'h-8'}`}
           />
         </Link>
-
+ 
         {/* Desktop Nav */}
         <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
           {navItems.map((item) => {
@@ -175,7 +179,7 @@ const Navbar = () => {
                     />
                   )}
                 </Link>
-
+ 
                 {/* --- Dropdown --- */}
                 {item.dropdown && (
                   <ul
@@ -199,7 +203,7 @@ const Navbar = () => {
                           <span>{subItem.title}</span>
                           {subItem.subDropdown && <ChevronRight size={14} strokeWidth={2} />}
                         </Link>
-
+ 
                         {/* --- Sub Dropdown --- */}
                         {subItem.subDropdown && (
                           <ul
@@ -229,13 +233,17 @@ const Navbar = () => {
             );
           })}
         </ul>
-
-        {/* Contact Button */}
-        <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
-          Contact Us
-        </Link>
-
-
+ 
+          {/* Contact Button */}
+          <Link
+            href="/contact"
+            className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
+          >
+            Contact Us
+          </Link>
+ 
+ 
+ 
         {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white text-xl"
@@ -244,7 +252,7 @@ const Navbar = () => {
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </nav>
-
+ 
       {/* --- Mobile Menu --- */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
@@ -267,7 +275,7 @@ const Navbar = () => {
                     />
                   )}
                 </button>
-
+ 
                 {item.dropdown && activeDropdown === item.title && (
                   <ul className="bg-gray-50 transition-all duration-300">
                     {item.dropdown.map((subItem) => (
@@ -283,7 +291,7 @@ const Navbar = () => {
                           {subItem.title}
                           {subItem.subDropdown && <ChevronRight size={14} />}
                         </button>
-
+ 
                         {subItem.subDropdown &&
                           activeSubDropdown === subItem.title && (
                             <ul className="bg-gray-100 transition-all duration-300">
@@ -322,5 +330,5 @@ const Navbar = () => {
     </header>
   );
 };
-
+ 
 export default Navbar;
