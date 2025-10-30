@@ -19,14 +19,7 @@ const navItems = [
       { title: 'Our Journey', url: '/about/journey' },
     ],
   },
-  {
-    title: 'Group',
-    url: '/group',
-    dropdown: [
-      { title: 'JetTech', url: '/group/jettech' },
-      { title: 'Global Metallurgy', url: '/group/global-metallurgy' },
-    ],
-  },
+  { title: 'Our Group', url: '/Ourgroup' },
   {
     title: 'Services',
     url: '/service',
@@ -39,8 +32,8 @@ const navItems = [
           { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/pulse-jet-bag' },
           { title: 'Dust Extraction', url: '/service/AirPollutionControl/dust-extraction' },
           { title: 'Ash Handling', url: '/service/AirPollutionControl/ash-handling' },
-          { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/centrifugal-fans' },
-          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/hvac-clean-room' },
+          { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/4' },
+          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/5' },
           { title: 'Clean Room Panel', url: '/service/AirPollutionControl/clean-room-panel' },
         ],
       },
@@ -252,13 +245,16 @@ const Navbar = () => {
             );
           })}
         </ul>
+ 
+          {/* Contact Button */}
+          <Link
+            href="/contactUs"
+            className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
+          >
+            Contact Us
+          </Link>
 
-        {/* Contact Button */}
-        <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
-          Contact Us
-        </div>
-
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle */} 
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
