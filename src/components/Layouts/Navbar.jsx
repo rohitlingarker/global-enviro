@@ -242,9 +242,7 @@ const Navbar = () => {
             Contact Us
           </Link>
 
-
-
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle */} 
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
