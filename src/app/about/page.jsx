@@ -11,10 +11,11 @@ import { useEffect } from "react";
 export default function AboutPage() {
   useEffect(() => {
     const handleHashChange = () => {
+      if (!window.location.hash) return;
       const element = document.querySelector(window.location.hash);
       if (element) {
         // element.scrollIntoView({ behavior: "smooth", block: "start" });
-        const headerOffset = 80;
+        const headerOffset = 70;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
@@ -31,10 +32,10 @@ export default function AboutPage() {
 
   return (
     <main>
-      <section id="banner">
+      <section id="overview">
         <AboutBanner />
       </section>
-      <section id="overview">
+      <section >
         <Overview />
       </section>
       <section id="mission">
