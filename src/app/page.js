@@ -26,7 +26,7 @@ We deliver innovative, client-focused services backed by deep technical expertis
       subtitle: `Innovative systems designed to reduce emissions and safeguard air quality.
 Empowering industries to meet environmental standards with efficiency and reliability.`,
       buttonText: "Know More",
-      buttonLink: "/service/AirPollution",
+      buttonLink: "/service/AirPollutionControl",
     },
     {
       image:
