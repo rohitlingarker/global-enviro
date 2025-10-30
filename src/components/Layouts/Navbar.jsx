@@ -20,14 +20,7 @@ const navItems = [
       { title: 'Our Journey', url: '/about/journey' },
     ],
   },
-  {
-    title: 'Group',
-    url: '/group',
-    dropdown: [
-      { title: 'JetTech', url: '/group/jettech' },
-      { title: 'Global Metallurgy', url: '/group/global-metallurgy' },
-    ],
-  },
+  { title: 'Our Group', url: '/Ourgroup' },
   {
     title: 'Services',
     url: '/service',
