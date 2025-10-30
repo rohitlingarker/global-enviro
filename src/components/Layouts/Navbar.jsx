@@ -36,11 +36,11 @@ const navItems = [
         title: 'Air Pollution Control',
         url: '/service/AirPollutionControl',
         subDropdown: [
-          { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/pulse-jet-bag' },
-          { title: 'Dust Extraction', url: '/service/AirPollutionControl/dust-extraction' },
+          { title: 'Pulse Jet Bag', url: '/service/AirPollutionControl/1' },
+          { title: 'Dust Extraction', url: '/service/AirPollutionControl/2' },
           { title: 'Ash Handling', url: '/service/AirPollutionControl/ash-handling' },
           { title: 'Centrifugal Fans', url: '/service/AirPollutionControl/centrifugal-fans' },
-          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/hvac-clean-room' },
+          { title: 'HVAC Clean Room', url: '/service/AirPollutionControl/5' },
           { title: 'Clean Room Panel', url: '/service/AirPollutionControl/clean-room-panel' },
         ],
       },
@@ -56,8 +56,8 @@ const navItems = [
         title: 'HVAC',
         url: '/service/HVAC',
         subDropdown: [
-          { title: 'HVAC System Components', url: '/service/HVAC/components' },
-          { title: 'Clean Room Equipments', url: '/service/HVAC/clean-room-equipments' },
+          { title: 'HVAC System Components', url: '/service/HVAC/HVACComponents' },
+          { title: 'Clean Room Equipments', url: '/service/HVAC/CleanRoomEquipments' },
         ],
       },
       {

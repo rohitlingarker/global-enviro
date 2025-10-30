@@ -14,13 +14,6 @@ export default function ProductCard({ id, title, image, specs = {} }) {
     >
       {/* Image Section */}
       <div className="md:w-1/2 flex justify-center ">
-        {/* <Image
-          src={image}
-          alt={title}
-          width={330}
-          height={250}
-          className="rounded-xl object-cover  shadow-md hover:scale-105 transition-transform duration-500 "
-        /> */}
        <Image
         src={image}
         alt={title}
@@ -28,14 +21,11 @@ export default function ProductCard({ id, title, image, specs = {} }) {
         height={250}
         className="rounded-br-3xl object-cover shadow-[0_8px_20px_rgba(128,128,128,0.4)] hover:scale-105 transition-transform duration-500"
         />
-
-
-
       </div>
 
       {/* Text Section */}
       <div className="md:w-1/2 mt-6 md:mt-0 md:pl-10">
-        <Link href={`/service/AirPollution/${id}`}>
+        <Link href={`/service/AirPollutionControl/${id}`}>
           <h1 className="text-2xl font-semibold text-blue-700 mb-3 hover:underline">
             {title}
           </h1>
