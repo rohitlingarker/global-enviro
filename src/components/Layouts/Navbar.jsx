@@ -30,7 +30,6 @@ const navItems = [
   {
     title: 'Services',
     url: '/service',
-    url: '/service',
     dropdown: [
       {
         title: 'Air Pollution Control',
@@ -71,8 +70,9 @@ const navItems = [
     ],
   },
   { title: 'Projects', url: '/projects' },
-  { title: 'Our Clients', url: '/clients' },
-  { title: 'News and Events', url: '/news' },
+  { title: 'Our Clients', url: '/OurClients' },
+  // ✅ Updated route here
+  { title: 'News & Events', url: '/news-and-events' },
   { title: 'Careers', url: '/careers' },
 ];
 
@@ -108,7 +108,6 @@ const Navbar = () => {
           : 'relative bg-white'
       }`}
     >
-      {/* --- Top Bar --- */}
       {!isScrolled && (
         <div className="flex justify-between items-center px-6 lg:px-20 py-2 border-b border-gray-200 bg-white">
           <Link href="/" className="leading-none">
@@ -135,7 +134,6 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* --- Main Nav --- */}
       <nav
         className="flex items-center justify-between px-6 lg:px-20 transition-all duration-300"
         style={{
@@ -143,7 +141,6 @@ const Navbar = () => {
           height: isScrolled ? '45px' : '60px',
         }}
       >
-        {/* Mobile Logo */}
         <Link href="/" className="block lg:hidden">
           <img
             src="/assets/images/group-logo.png"
@@ -154,7 +151,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
           {navItems.map((item) => {
             const isActive = pathname === item.url;
@@ -179,7 +175,6 @@ const Navbar = () => {
                   {item.title} {item.dropdown && <span>▼</span>}
                 </Link>
 
-                {/* --- Dropdown --- */}
                 {item.dropdown && (
                   <ul
                     className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[220px] transition-all duration-300 ${
@@ -209,7 +204,6 @@ const Navbar = () => {
                           {subItem.subDropdown && <span>▶</span>}
                         </Link>
 
-                        {/* --- Sub Dropdown --- */}
                         {subItem.subDropdown && (
                           <ul
                             className={`absolute top-0 left-full bg-white shadow-md rounded-md min-w-[200px] transition-all duration-300 ${
@@ -239,12 +233,10 @@ const Navbar = () => {
           })}
         </ul>
 
-        {/* Contact Button */}
         <div className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all">
           Contact Us
         </div>
 
-        {/* Mobile Toggle */}
         <button
           className="lg:hidden text-white text-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -253,7 +245,6 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* --- Mobile Menu --- */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-white/95 backdrop-blur-md text-gray-800 shadow-md animate-fadeInDown">
           <ul className="flex flex-col">
