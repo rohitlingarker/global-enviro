@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section className="relative bg-gradient-to-br from-white via-[#f2f8ff] to-[#e6f0ff] overflow-hidden py-20 px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row items-stretch gap-10">
+    <section className="relative bg-gradient-to-br from-white via-[#f2f8ff] to-[#e6f0ff] overflow-hidden py-10 px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row items-stretch gap-10">
       {/* Decorative background blur */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-blue-200/40 blur-3xl rounded-full" />
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#003366]/10 blur-2xl rounded-full" />
