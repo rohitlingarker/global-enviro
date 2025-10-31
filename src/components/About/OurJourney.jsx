@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { FaLeaf, FaUsers, FaGlobeAsia, FaRecycle } from "react-icons/fa";
 
@@ -7,62 +8,72 @@ export default function OurJourney() {
       year: "2010",
       title: "The Beginning",
       description:
-        "Global Enviro was born with a mission to make our planet greener and cleaner through sustainable innovations.",
-      icon: <FaLeaf className="text-primary text-3xl" />,
+        "Global Enviro was founded with a clear vision — to protect the environment by introducing sustainable innovations that minimize pollution and promote green energy.",
+      icon: <FaLeaf className="text-accent text-3xl" />,
     },
     {
       year: "2015",
       title: "Expanding Horizons",
       description:
-        "We expanded our operations globally, collaborating with eco-conscious partners and environmental agencies.",
-      icon: <FaGlobeAsia className="text-primary text-3xl" />,
+        "We expanded globally, forming partnerships with eco-conscious organizations and government initiatives for sustainable industrial growth.",
+      icon: <FaGlobeAsia className="text-accent text-3xl" />,
     },
     {
       year: "2018",
       title: "People & Impact",
       description:
-        "Over 500 dedicated members joined hands to reduce carbon footprints and promote renewable energy awareness.",
-      icon: <FaUsers className="text-primary text-3xl" />,
+        "Our team grew to 500+ passionate professionals dedicated to reducing carbon footprints and increasing renewable energy awareness worldwide.",
+      icon: <FaUsers className="text-accent text-3xl" />,
     },
     {
       year: "2023",
       title: "Sustainability Drive",
       description:
-        "We launched initiatives focusing on waste management, recycling, and circular economy development.",
-      icon: <FaRecycle className="text-primary text-3xl" />,
+        "We launched key programs focusing on waste management, water recycling, and circular economy solutions for a cleaner planet.",
+      icon: <FaRecycle className="text-accent text-3xl" />,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center py-16 px-6">
-      {/* Heading */}
+    <div
+      className="min-h-screen flex flex-col items-center justify-center py-20 px-6"
+      style={{
+        background:
+          "linear-gradient(135deg, #0A1833 0%, #417DD8 50%, #EAF2FF 100%)", // Dark navy to blue to light blue gradient
+      }}
+    >
+      {/* Page Title */}
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-4xl font-bold mb-10 text-center text-primary"
+        className="text-5xl font-extrabold mb-12 text-white text-center"
       >
-        Our Journey 🌿
+        Our Journey
       </motion.h1>
 
-      {/* Timeline Section */}
-      <div className="relative max-w-5xl mx-auto border-l-4 border-primary pl-6 space-y-12">
+      {/* Timeline */}
+      <div className="relative max-w-5xl mx-auto border-l-4 border-white pl-8 space-y-14">
         {milestones.map((milestone, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="relative bg-card text-card-foreground rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300"
+            transition={{ duration: 0.8, delay: index * 0.2 }}
+            className="relative bg-white/15 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white"
           >
-            <div className="absolute -left-10 flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full">
+            {/* Icon */}
+            <div className="absolute -left-10 flex items-center justify-center w-12 h-12 bg-white/25 rounded-full backdrop-blur-sm">
               {milestone.icon}
             </div>
 
-            <h3 className="text-xl font-semibold text-accent">{milestone.year}</h3>
-            <h2 className="text-2xl font-bold mb-2">{milestone.title}</h2>
-            <p className="text-muted-foreground leading-relaxed">
+            {/* Content */}
+            <h3 className="text-xl font-semibold text-[#EAF2FF]">{milestone.year}</h3>
+            <h2 className="text-2xl font-bold text-[#AECBFF] mb-2">
+              {milestone.title}
+            </h2>
+            <p className="text-[#D8E4F7] leading-relaxed">
               {milestone.description}
             </p>
           </motion.div>
@@ -74,10 +85,10 @@ export default function OurJourney() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
-        className="mt-16 text-center max-w-3xl"
+        className="mt-20 text-center max-w-3xl"
       >
-        <p className="text-lg italic text-muted-foreground">
-          “Every milestone we achieve is a step closer to a sustainable tomorrow.”
+        <p className="text-lg italic text-[#EAF2FF]">
+          “Every milestone we cross strengthens our commitment to building a sustainable world for generations to come.”
         </p>
       </motion.div>
     </div>
