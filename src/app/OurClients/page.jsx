@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React from "react";
 
 const clientLogos = [
@@ -104,29 +105,59 @@ const clientLogos = [
 
 export default function OurClientsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-16 px-6">
-      <h1 className="text-4xl font-bold text-center text-blue-900 mb-4">
-        Our Clients
-      </h1>
-      <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        We’re proud to have partnered with industry leaders and organizations
-        across diverse sectors. Here are some of the clients who trust our
-        expertise.
-      </p>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {/* ===== Banner Section ===== */}
+      <section className="relative bg-gradient-to-r from-blue-100 to-blue-50 pb-20">
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 120"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#f9fafb"
+            d="M0,32 C360,100 1080,0 1440,80 L1440,120 L0,120 Z"
+          />
+        </svg>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 place-items-center">
-        {clientLogos.map((logo, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-center bg-white shadow-md rounded-2xl p-4 w-36 h-24 hover:shadow-xl transition duration-300"
+        <div className="relative container mx-auto px-6 pt-16 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl font-bold text-blue-900 tracking-wide"
           >
-            <img
-              src={logo}
-              alt={`Client ${index + 1}`}
-              className="max-h-16 object-contain"
-            />
-          </div>
-        ))}
+            OUR CLIENTS
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto"
+          >
+            Trusted by leading industries across India — we take pride in
+            building long-term partnerships with renowned organizations.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ===== Clients Grid Section (White Background, Full Color Logos) ===== */}
+      <div className="bg-white py-16 px-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 place-items-center">
+          {clientLogos.map((logo, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.3 }}
+              className="flex items-center justify-center"
+            >
+              <img
+                src={logo}
+                alt={`Client ${index + 1}`}
+                className="max-h-16 object-contain transition duration-300"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );
