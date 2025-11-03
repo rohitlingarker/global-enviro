@@ -1,111 +1,189 @@
 'use client';
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
 
-export default function CentrifugalFansPage() {
+export default function PulseJetBagFilterPage() {
   return (
     <div className="bg-white text-gray-800 leading-relaxed">
-      {/* -------- Hero / Intro Section -------- */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
+      {/* ---------- Intro Section ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-10">
         <h1 className="text-4xl font-bold mb-4 text-blue-800">
-          Centrifugal Fans
+          Pulse Jet Bag Filter / Pulse Jet Hose Bag Type Filters
         </h1>
         <p>
-          Centrifugal fans are engineered to move air efficiently across a wide range of industrial processes. 
-          Their robust design ensures reliable operation even in demanding environments. 
-        </p>
-        <p className="mt-3">
-          With high airflow capacity and low noise levels, they deliver optimal performance and energy savings — 
-          ideal for ventilation, dust extraction, and fume handling applications across multiple industries.
+          Global Enviro offers advanced Pulse Jet Bag Filters — also known as
+          conventional de-dusting filters — designed with next-generation
+          technology to deliver superior performance, longer filter life, and
+          minimal maintenance. Our innovative systems achieve reduced emission
+          levels, lower pressure drops, and optimized space utilization while
+          extending bag life in demanding industrial conditions.
         </p>
       </section>
 
-      {/* -------- Combined Section: About + Image -------- */}
-      <section className="bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-6 items-start">
-          {/* LEFT: TEXT */}
-          <div className="flex flex-col justify-start space-y-6">
-            <div>
-              <h2 className="text-2xl font-semibold text-blue-800 mb-3">
-                About Global Enviro Centrifugal Fans
-              </h2>
-              <p className="mb-4">
-                Centrifugal Blowers from Global Enviro are among the most efficient and versatile air-moving 
-                systems used in modern industries. These fans deliver consistent airflow, low vibration, 
-                and quiet operation, making them ideal for a variety of air handling and process applications.
-              </p>
-              <p>
-                Our centrifugal fans are precision-engineered with aerodynamic designs that enhance airflow 
-                efficiency while minimizing energy consumption. Each fan is built with robust materials and 
-                high-quality components to ensure long life and reliability, even in challenging environments.
-              </p>
-            </div>
-          </div>
+      {/* ---------- About Fabric Filtration Technology ---------- */}
+      <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center px-6 py-6">
+        {/* LEFT SIDE - Text */}
+        <div>
+          <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+            About Fabric Filtration Technology
+          </h2>
+          <p>
+            The concept of fabric filtration began over a century ago and remains
+            one of the most effective and practical methods for separating solid
+            particles from air or gas streams. Tubular filter fabrics (woven or
+            non-woven) are vertically installed in a housing, each supported by
+            a metal cage and venturi to prevent collapse under vacuum or
+            pressure.
+          </p>
+          <p className="mt-3">
+            Dust-laden air passes through the fabric, capturing particulate
+            matter on the outer surface and forming a dust cake, ensuring clean
+            air output and long-lasting filter performance.
+          </p>
+        </div>
 
-          {/* RIGHT: IMAGE */}
-          <div className="relative w-full h-[420px]">
-            <Image
-              src="/assets/images/centrifugal fans.png"
-              alt="Centrifugal Fan System"
-              fill
-              className="object-cover rounded-lg shadow-md"
-            />
-          </div>
+        {/* RIGHT SIDE - Image */}
+        <div className="relative w-full h-[320px]">
+          <Image
+            src="/assets/images/pulsejet.png"
+            alt="Pulse Jet Bag Filter"
+            fill
+            className="object-contain rounded-lg shadow-md"
+          />
         </div>
       </section>
 
-      {/* -------- Key Features -------- */}
+      {/* ---------- Cleaning Mechanism ---------- */}
       <section className="max-w-6xl mx-auto px-6 py-6">
-        <h2 className="text-2xl font-semibold text-blue-800 mb-3">Key Features</h2>
-        <ul className="list-disc pl-6 space-y-1">
-          <li>High Efficiency – Maximum airflow with minimal power usage.</li>
-          <li>Low Noise Operation – Aerodynamic blades ensure smooth performance.</li>
-          <li>Durable Construction – Built with high-grade SS316, SS304, or IS2062 materials.</li>
-          <li>Wide Temperature Range – Reliable operation up to 400°C.</li>
-          <li>Flexible Design Options – Forward, Backward, Radial, and Aerofoil blade types.</li>
-          <li>Easy Maintenance – Simple design for quick servicing and part replacement.</li>
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Cleaning Mechanism
+        </h2>
+        <p>
+          The accumulated dust is cleaned row-by-row using short bursts of
+          compressed air in either online or offline mode. This reverse airflow
+          dislodges dust from filter bags, aided by the venturi effect for
+          maximum cleaning efficiency. Cracked dust cake and dislodged particles
+          fall into the hopper and are discharged through the dust removal
+          system.
+        </p>
+        <p className="mt-2">
+          <strong>Typical Air Volume Range:</strong> 5,000 to 500,000 m³/hr (single or modular
+          design)
+        </p>
+      </section>
+
+      {/* ---------- Air Pollution Control Device ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-6">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Air Pollution Control Device (APCD)
+        </h2>
+        <p>
+          An Air Pollution Control Device extracts contaminated air containing
+          dust, fumes, or particulates from industrial processes and filters it
+          to release clean, breathable air. These systems are also known as:
+        </p>
+        <ul className="list-disc pl-6 mt-2 space-y-1">
+          <li>Bag Filter / Bag House</li>
+          <li>Pulse Jet Dust Collector</li>
+          <li>De-dusting System</li>
+          <li>Silo Vent Filter</li>
+          <li>Cassette Type Filter</li>
+          <li>Reverse Air Cleaned Bag Filter</li>
+          <li>Fabric Filter</li>
+          <li>Flue Gas Emission Control System</li>
+          <li>Fume Extraction System</li>
+          <li>Dust Recovery System</li>
         </ul>
       </section>
 
-      {/* -------- Applications -------- */}
+      {/* ---------- Key Components ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-6">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Key Components
+        </h2>
+        <ul className="list-disc pl-6 space-y-1">
+          <li>Filter Bags (woven / non-woven)</li>
+          <li>Filter Cages</li>
+          <li>Pulse Cleaning Valves</li>
+          <li>Sequential Timer Units</li>
+          <li>Centrifugal Blowers</li>
+          <li>Rotary Airlock Valves (RAV)</li>
+          <li>Filter Cartridges</li>
+        </ul>
+        <p className="mt-2">
+          Each system is engineered based on dust loading, air-to-cloth ratio,
+          can velocity, gas temperature, and local emission norms.
+        </p>
+      </section>
+
+      {/* ---------- Filtration Efficiency ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-6">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Filtration Efficiency
+        </h2>
+        <p>
+          Global Enviro’s Air Pollution Control Devices or Pulse Jet Bag Filters
+          achieve filtration levels as low as <strong>2 mg/Nm³</strong>, ensuring
+          compliance with strict environmental standards while maintaining high
+          operational efficiency.
+        </p>
+      </section>
+
+      {/* ---------- Operation ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-6">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Pulse Jet Bag Filter – Operation
+        </h2>
+        <p>
+          The Pulse Jet Bag Filter removes fine dust particles from air or gas
+          streams generated during industrial processes such as boilers, cement
+          processing, or foundry operations. It ensures collection efficiency up
+          to 99.9% and operates reliably up to 260°C.
+        </p>
+        <p className="mt-3">
+          Each bag is supported by a metal cage mounted on a tube sheet at the
+          top of the bag house. Dust-laden air flows from outside to inside
+          through the bags, allowing clean air to exit from the top while dust
+          accumulates on the outer surface.
+        </p>
+      </section>
+
+      {/* ---------- Types of Cleaning Mechanisms ---------- */}
+      <section className="max-w-6xl mx-auto px-6 py-6">
+        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
+          Types of Cleaning Mechanisms
+        </h2>
+
+        <h3 className="text-lg font-semibold text-blue-700 mt-3">
+          Online Cleaning
+        </h3>
+        <p>
+          In online cleaning, compartments remain operational while being
+          cleaned. A short pulse of compressed air dislodges the dust, allowing
+          continuous operation with minimal downtime.
+        </p>
+
+        <h3 className="text-lg font-semibold text-blue-700 mt-3">
+          Offline Cleaning
+        </h3>
+        <p>
+          In offline cleaning, one compartment is isolated for cleaning while
+          others continue filtration. This method is ideal for low-density or
+          volatile dust applications with air volumes up to 100,000 CMH.
+        </p>
+      </section>
+
+      {/* ---------- Applications ---------- */}
       <section className="max-w-6xl mx-auto px-6 py-6">
         <h2 className="text-2xl font-semibold text-blue-800 mb-3">Applications</h2>
         <ul className="list-disc pl-6 space-y-1">
-          <li>Induced Draft (ID) and Forced Draft (FD) Systems</li>
-          <li>Primary Air (PA) Systems in Boilers</li>
-          <li>Dust Extraction Systems</li>
-          <li>Fume Exhaust Systems</li>
-          <li>Pneumatic Conveying Systems</li>
-          <li>Industrial Ventilation and Air Circulation</li>
+          <li>Process & Power Boilers</li>
+          <li>Steel Melting Induction Furnaces</li>
+          <li>Cement and Mineral Processing Plants</li>
+          <li>Food & Pharmaceutical Industries</li>
+          <li>Lead Smelting and Foundry Operations</li>
         </ul>
-      </section>
-
-      {/* -------- Why Choose Us -------- */}
-      <section className="max-w-6xl mx-auto px-6 py-6">
-        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
-          Why Choose Global Enviro Centrifugal Fans?
-        </h2>
-        <ul className="list-disc pl-6 space-y-1">
-          <li>Advanced Aerodynamic Design – Optimized for enhanced airflow and reduced resistance.</li>
-          <li>Energy Efficient – Low operating costs through efficient power utilization.</li>
-          <li>Custom-Built Solutions – Tailored to match your specific process and performance needs.</li>
-          <li>Proven Reliability – Designed to perform continuously under tough industrial conditions.</li>
-        </ul>
-      </section>
-
-      {/* -------- Final Summary -------- */}
-      <section className="max-w-6xl mx-auto px-6 py-6">
-        <h2 className="text-2xl font-semibold text-blue-800 mb-3">
-          Performance You Can Rely On
-        </h2>
-        <p>
-          With a reputation for quality engineering and dependable performance, Global Enviro Centrifugal Fans 
-          are the preferred choice for industries seeking efficient air movement, long-lasting durability, 
-          and energy savings across multiple applications.
-        </p>
       </section>
     </div>
   );
 }
-
-
