@@ -20,9 +20,7 @@ const navItems = [
       { title: "Our Journey", url: "/about#journey" },
     ],
   },
-  {
-    title: "Group", url: "/Ourgroup",
-  },
+  { title: "Group", url: "/Ourgroup" },
   {
     title: "Services",
     url: "/service",
@@ -33,19 +31,10 @@ const navItems = [
         subDropdown: [
           { title: "Pulse Jet Bag", url: "/service/AirPollutionControl/1" },
           { title: "Dust Extraction", url: "/service/AirPollutionControl/2" },
-          {
-            title: "Ash Handling",
-            url: "/service/AirPollutionControl/ash-handling",
-          },
-          {
-            title: "Centrifugal Fans",
-            url: "/service/AirPollutionControl/4",
-          },
+          { title: "Ash Handling", url: "/service/AirPollutionControl/ash-handling" },
+          { title: "Centrifugal Fans", url: "/service/AirPollutionControl/4" },
           { title: "HVAC Clean Room", url: "/service/AirPollutionControl/5" },
-          {
-            title: "Clean Room Panel",
-            url: "/service/AirPollutionControl/clean-room-panel",
-          },
+          { title: "Clean Room Panel", url: "/service/AirPollutionControl/clean-room-panel" },
         ],
       },
       {
@@ -53,24 +42,15 @@ const navItems = [
         url: "/service/MaterialHandling",
         subDropdown: [
           { title: "Conveyors", url: "/service/MaterialHandling/conveyors" },
-          {
-            title: "Bucket Elevators",
-            url: "/service/MaterialHandling/bucket-elevators",
-          },
+          { title: "Bucket Elevators", url: "/service/MaterialHandling/bucket-elevators" },
         ],
       },
       {
         title: "HVAC",
         url: "/service/HVAC",
         subDropdown: [
-          {
-            title: "HVAC System Components",
-            url: "/service/HVAC/HVACComponents",
-          },
-          {
-            title: "Clean Room Equipments",
-            url: "/service/HVAC/CleanRoomEquipments",
-          },
+          { title: "HVAC System Components", url: "/service/HVAC/HVACComponents" },
+          { title: "Clean Room Equipments", url: "/service/HVAC/CleanRoomEquipments" },
         ],
       },
       {
@@ -78,17 +58,13 @@ const navItems = [
         url: "/service/EPCPower",
         subDropdown: [
           { title: "Bag Filters", url: "/service/EPCPower/bag-filters" },
-          {
-            title: "Electrostatic Precipitators",
-            url: "/service/EPCPower/electrostatic-precipitators",
-          },
+          { title: "Electrostatic Precipitators", url: "/service/EPCPower/electrostatic-precipitators" },
         ],
       },
     ],
   },
   { title: "Projects", url: "/Project" },
   { title: "Our Clients", url: "/OurClients" },
-  // ✅ Updated route here
   { title: "News & Events", url: "/news-and-events" },
   { title: "Careers", url: "/careers" },
 ];
@@ -117,10 +93,9 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Spacer div to reserve header height */}
       <div
         style={{
-          height: isScrolled ? "60px" : "140px", // adjust based on your top bar + nav height
+          height: isScrolled ? "60px" : "140px",
           transition: "height 0.4s ease-in-out",
         }}
       />
@@ -132,9 +107,8 @@ const Navbar = () => {
         }`}
       >
         {/* --- Top Bar --- */}
-
         <div
-          className={`flex justify-between items-center px-6 lg:px-20 border-b border-gray-200 bg-white transition-all duration-500 ease-in-out overflow-hidden ${
+          className={`flex justify-between items-center px-4 md:px-8 xl:px-20 border-b border-gray-200 bg-white transition-all duration-500 ease-in-out overflow-hidden ${
             isScrolled
               ? "max-h-0 opacity-0 py-0 border-none"
               : "max-h-[80px] opacity-100 py-2"
@@ -148,7 +122,7 @@ const Navbar = () => {
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-6 flex-wrap">
+          <div className="hidden md:flex items-center gap-4 xl:gap-6 flex-wrap">
             <div className="flex items-center gap-2 text-gray-700">
               <FaPhone className="text-[#3877d4]" />
               <span className="text-sm">+91 98480 31866</span>
@@ -159,7 +133,7 @@ const Navbar = () => {
             </div>
             <Link
               href="/RequestQuote"
-              className="bg-[#3877d4] text-white font-semibold px-5 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
+              className="bg-[#3877d4] text-white font-semibold px-4 py-2 rounded-md hover:bg-[#2f5fb8] transition-all"
             >
               REQUEST A QUOTE
             </Link>
@@ -168,7 +142,7 @@ const Navbar = () => {
 
         {/* --- Main Nav --- */}
         <nav
-          className="flex items-center justify-between px-4 sm:px-8 lg:px-20 transition-all duration-300"
+          className="flex items-center justify-between px-3 sm:px-6 lg:px-12 xl:px-20 transition-all duration-300"
           style={{
             backgroundColor: primaryBlue,
             height: isScrolled ? "48px" : "60px",
@@ -179,116 +153,112 @@ const Navbar = () => {
             <img
               src="/assets/images/group-logo.png"
               alt="Global Enviro"
-              className={`transition-all duration-300 ${
-                isScrolled ? "h-6" : "h-8"
-              }`}
+              className={`transition-all duration-300 ${isScrolled ? "h-6" : "h-8"}`}
             />
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden lg:flex gap-6 xl:gap-10 text-[14px] font-semibold uppercase relative">
-            {navItems.map((item) => {
-              const isActive = pathname === item.url;
-              return (
-                <li
-                  key={item.title}
-                  className="relative group"
-                  onMouseEnter={() => setActiveDropdown(item.title)}
-                  onMouseLeave={() => {
-                    setActiveDropdown(null);
-                    setActiveSubDropdown(null);
-                  }}
-                >
-                  <Link
-                    href={item.url}
-                    className={`px-3 py-1 rounded-md flex items-center gap-1 ${
-                      isActive
-                        ? "bg-[#386FC1] text-white"
-                        : "hover:bg-[#386FC1] text-white"
-                    }`}
+          <div className="hidden lg:flex items-center justify-between w-full">
+            <ul className="flex flex-wrap gap-5 xl:gap-8 text-[14px] font-semibold uppercase">
+              {navItems.map((item) => {
+                const isActive = pathname === item.url;
+                return (
+                  <li
+                    key={item.title}
+                    className="relative group"
+                    onMouseEnter={() => setActiveDropdown(item.title)}
+                    onMouseLeave={() => {
+                      setActiveDropdown(null);
+                      setActiveSubDropdown(null);
+                    }}
                   >
-                    {item.title}
-                    {item.dropdown && (
-                      <ChevronDown
-                        size={14}
-                        strokeWidth={2}
-                        className={`ml-1 transition-transform duration-300 ${
-                          activeDropdown === item.title
-                            ? "rotate-180"
-                            : "rotate-0"
-                        }`}
-                      />
-                    )}
-                  </Link>
-
-                  {/* --- Dropdown --- */}
-                  {item.dropdown && (
-                    <ul
-                      className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[220px] border border-gray-100 transform transition-all duration-300 ease-in-out ${
-                        activeDropdown === item.title
-                          ? "opacity-100 visible translate-y-0"
-                          : "opacity-0 invisible -translate-y-3"
+                    <Link
+                      href={item.url}
+                      className={`px-2 py-1 rounded-md flex items-center gap-1 ${
+                        isActive
+                          ? "bg-[#386FC1] text-white"
+                          : "hover:bg-[#386FC1] text-white"
                       }`}
                     >
-                      {item.dropdown.map((subItem) => (
-                        <li
-                          key={subItem.title}
-                          className="relative"
-                          onMouseEnter={() =>
-                            subItem.subDropdown &&
-                            setActiveSubDropdown(subItem.title)
-                          }
-                          onMouseLeave={() =>
-                            subItem.subDropdown && setActiveSubDropdown(null)
-                          }
-                        >
-                          <Link
-                            href={subItem.url}
-                            className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap flex items-center justify-between"
+                      {item.title}
+                      {item.dropdown && (
+                        <ChevronDown
+                          size={14}
+                          strokeWidth={2}
+                          className={`ml-1 transition-transform duration-300 ${
+                            activeDropdown === item.title ? "rotate-180" : "rotate-0"
+                          }`}
+                        />
+                      )}
+                    </Link>
+
+                    {/* Dropdown */}
+                    {item.dropdown && (
+                      <ul
+                        className={`absolute left-0 mt-2 bg-white text-gray-800 shadow-lg rounded-md min-w-[220px] border border-gray-100 transform transition-all duration-300 ease-in-out ${
+                          activeDropdown === item.title
+                            ? "opacity-100 visible translate-y-0"
+                            : "opacity-0 invisible -translate-y-3"
+                        }`}
+                      >
+                        {item.dropdown.map((subItem) => (
+                          <li
+                            key={subItem.title}
+                            className="relative"
+                            onMouseEnter={() =>
+                              subItem.subDropdown && setActiveSubDropdown(subItem.title)
+                            }
+                            onMouseLeave={() =>
+                              subItem.subDropdown && setActiveSubDropdown(null)
+                            }
                           >
-                            <span>{subItem.title}</span>
-                            {subItem.subDropdown && (
-                              <ChevronRight size={14} strokeWidth={2} />
-                            )}
-                          </Link>
-
-                          {/* --- Sub Dropdown --- */}
-                          {subItem.subDropdown && (
-                            <ul
-                              className={`absolute top-0 left-full bg-white shadow-md rounded-md min-w-[200px] transition-all duration-300 ${
-                                activeSubDropdown === subItem.title
-                                  ? "opacity-100 visible translate-x-0"
-                                  : "opacity-0 invisible -translate-x-2"
-                              }`}
+                            <Link
+                              href={subItem.url}
+                              className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap flex items-center justify-between"
                             >
-                              {subItem.subDropdown.map((deepItem) => (
-                                <li key={deepItem.title}>
-                                  <Link
-                                    href={deepItem.url}
-                                    className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap"
-                                  >
-                                    {deepItem.title}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+                              <span>{subItem.title}</span>
+                              {subItem.subDropdown && (
+                                <ChevronRight size={14} strokeWidth={2} />
+                              )}
+                            </Link>
 
-          {/* Contact Button */}
-          <Link
-            href="/ContactUs"
-            className="hidden lg:flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase cursor-pointer rounded-md hover:bg-gray-900 transition-all"
-          >
-            Contact Us
-          </Link>
+                            {subItem.subDropdown && (
+                              <ul
+                                className={`absolute top-0 left-full bg-white shadow-md rounded-md min-w-[200px] transition-all duration-300 ${
+                                  activeSubDropdown === subItem.title
+                                    ? "opacity-100 visible translate-x-0"
+                                    : "opacity-0 invisible -translate-x-2"
+                                }`}
+                              >
+                                {subItem.subDropdown.map((deepItem) => (
+                                  <li key={deepItem.title}>
+                                    <Link
+                                      href={deepItem.url}
+                                      className="block px-4 py-2 text-sm hover:bg-gray-100 whitespace-nowrap"
+                                    >
+                                      {deepItem.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Contact Button */}
+            <Link
+              href="/ContactUs"
+              className="ml-4 bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
+            >
+              Contact Us
+            </Link>
+          </div>
 
           {/* Mobile Toggle */}
           <button
@@ -365,7 +335,6 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="p-4 text-center">
-                {/* Contact Button */}
                 <Link
                   href="/contactUs"
                   className="flex items-center justify-center bg-black text-white px-5 py-2 font-bold uppercase rounded-md hover:bg-gray-900 transition-all"
