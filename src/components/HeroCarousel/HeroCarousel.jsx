@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 
 // usage
 // const slides = [
@@ -44,12 +46,14 @@ export default function HeroCarousel({
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+
   // Auto-rotate logic
   useEffect(() => {
     if (paused) return;
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, interval);
+    const timer = setInterval(nextSlide, interval);
     return () => clearInterval(timer);
   }, [paused, slides.length, interval]);
 
@@ -69,9 +73,9 @@ export default function HeroCarousel({
             src={slides[current].image}
             alt={slides[current].title}
             className="w-full h-full object-cover"
-            initial={{ opacity: 0, scale: 1 , x:50}}
-            animate={{ opacity: 1, scale: 1 , x:0}}
-            exit={{ opacity: 0, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
           />
 
@@ -85,7 +89,7 @@ export default function HeroCarousel({
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
-                delay: 0.3, //  delay ensures text animates AFTER image fades in
+                delay: 0.3, // delay ensures text animates AFTER image fades in
               }}
               className="max-w-4xl"
             >
@@ -109,6 +113,24 @@ export default function HeroCarousel({
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        onMouseEnter={() => setPaused(pauseOnBtnHover && true)}
+        onMouseLeave={() => setPaused(false)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 hover:cursor-pointer aspect-1/2 transition"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={nextSlide}
+        onMouseEnter={() => setPaused(pauseOnBtnHover && true)}
+        onMouseLeave={() => setPaused(false)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 hover:cursor-pointer aspect-1/2 transition"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
 
       {/* Navigation Dots */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">

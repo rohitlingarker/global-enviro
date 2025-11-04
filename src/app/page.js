@@ -62,7 +62,7 @@ Delivering reliable, scalable infrastructure that drives sustainable growth and 
     <main className="flex min-h-screen flex-col items-center justify-between bg-gray-300">
       <HeroCarousel
         slides={slides}
-        interval={4000}
+        interval={7000}
         pauseOnHover={false}
         pauseOnBtnHover={true}
       />
