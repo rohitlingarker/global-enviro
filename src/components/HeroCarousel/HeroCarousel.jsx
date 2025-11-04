@@ -38,17 +38,24 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function HeroCarousel({
   slides = [],
-  interval = 2000,
+  interval = 3000,
   pauseOnHover = false,
   pauseOnBtnHover = false,
   className,
 }) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [direction, setDirection] = useState(0);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
-  const prevSlide = () =>
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   // Auto-rotate logic
   useEffect(() => {
@@ -59,24 +66,46 @@ export default function HeroCarousel({
 
   if (!slides.length) return null;
 
+  // Slide animation variants
+  const variants = {
+    enter: (dir) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir) => ({ x: dir > 0 ? -100 : 100, opacity: 0 }),
+  };
+
   return (
     <div
       className={cn("relative w-full h-[500px] overflow-hidden", className)}
       onMouseEnter={() => setPaused(pauseOnHover && true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <AnimatePresence mode="wait">
-        <motion.div key={current} className="absolute inset-0">
-          {/* Image transition */}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={current}
+          className="absolute inset-0"
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.8}
+          onDragEnd={(e, { offset, velocity }) => {
+            const swipe = offset.x + velocity.x * 0.2;
+            if (swipe < -100) nextSlide();
+            else if (swipe > 100) prevSlide();
+          }}
+        >
+          {/* Image */}
           <motion.img
             key={`image-${current}`}
             src={slides[current].image}
             alt={slides[current].title}
             className="w-full h-full object-cover"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ scale: 1 }}
+            animate={{ scale: 1 }}
           />
 
           {/* Overlay */}
@@ -89,7 +118,7 @@ export default function HeroCarousel({
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
-                delay: 0.3, // delay ensures text animates AFTER image fades in
+                delay: 0.3,
               }}
               className="max-w-4xl"
             >
@@ -114,12 +143,12 @@ export default function HeroCarousel({
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <button
         onClick={prevSlide}
         onMouseEnter={() => setPaused(pauseOnBtnHover && true)}
         onMouseLeave={() => setPaused(false)}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 hover:cursor-pointer aspect-1/2 transition"
+        className="absolute left-2 top-1/2 -translate-y-1/2  hover:bg-black/70 text-white p-1 aspect-1/2 transition"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -127,12 +156,12 @@ export default function HeroCarousel({
         onClick={nextSlide}
         onMouseEnter={() => setPaused(pauseOnBtnHover && true)}
         onMouseLeave={() => setPaused(false)}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 hover:cursor-pointer aspect-1/2 transition"
+        className="absolute right-2 top-1/2 -translate-y-1/2  hover:bg-black/70 text-white p-1 aspect-1/2 transition"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Navigation Dots */}
+      {/* Dots */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, i) => (
           <button
